@@ -10,6 +10,7 @@ public class PlayerScripts : MonoBehaviour {
 	}
 
 	public float speed;
+	public bool isGameOver = false;
 
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +23,12 @@ public class PlayerScripts : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (KeyCode.DownArrow) && (transform.position.y >= 0 )) {
 			transform.position += Vector3.down * speed;
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.tag == "trafficlight"){
+			Destroy (gameObject);
 		}
 	}
 }

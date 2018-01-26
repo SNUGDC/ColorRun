@@ -454,6 +454,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 61830324646026152, guid: 55fec6482b2ad284eaa10893a1720b4d,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -1.243374
+      objectReference: {fileID: 0}
+    - target: {fileID: 61830324646026152, guid: 55fec6482b2ad284eaa10893a1720b4d,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 3.486748
+      objectReference: {fileID: 0}
+    - target: {fileID: 61830324646026152, guid: 55fec6482b2ad284eaa10893a1720b4d,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: -3.2613087
+      objectReference: {fileID: 0}
+    - target: {fileID: 61830324646026152, guid: 55fec6482b2ad284eaa10893a1720b4d,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 9.724003
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55fec6482b2ad284eaa10893a1720b4d, type: 2}
   m_IsPrefabParent: 0
@@ -550,6 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
+  isGameOver: 0
 --- !u!61 &1240186991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -559,7 +580,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -844,7 +865,7 @@ GameObject:
   - component: {fileID: 1842297246}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: trafficlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

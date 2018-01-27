@@ -37,7 +37,7 @@ public class ChangeLightsColor : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
 			if (spriteRenderer.sprite == redLight) {
-				SceneManager.LoadScene ("GameOver");
+				SceneManager.LoadScene ("MainMenu");
 			}
 		}
 	}

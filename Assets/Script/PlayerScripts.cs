@@ -10,7 +10,6 @@ public class PlayerScripts : MonoBehaviour {
 	}
 
 	public float speed;
-	public bool isGameOver = false;
 
 	// Update is called once per frame
 	void Update () {

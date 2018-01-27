@@ -5,7 +5,7 @@ using UnityEngine;
 public class TrafficLightsScripts : MonoBehaviour {
 
     //Traffic means Trafficlights
-    public float ScrollSpeed = 5.0f;
+    public float scrollSpeed = 5.0f;
     public GameObject[] Traffic;
     public float frequency = 0.5f;
     float counter = 0.0f;
@@ -47,7 +47,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 
     void ScrollTraffic(GameObject currentTraffic)
     {
-        currentTraffic.transform.position -= Vector3.right * (ScrollSpeed * Time.deltaTime);
+        currentTraffic.transform.position -= Vector3.right * (scrollSpeed * Time.deltaTime);
     }
 
     void GenerateRandomTraffic()

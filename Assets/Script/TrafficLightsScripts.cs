@@ -21,7 +21,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 	void Update () {
 
         //GenerateTrafficlights
-        if (counter<=0.0f)
+        if (counter<=Random.Range(0.0f, 0.2f))
         {
             GenerateRandomTraffic();
             

@@ -713,6 +713,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2074628884}
+  - component: {fileID: 2074628885}
   m_Layer: 0
   m_Name: TrafficLightsSpawnPoint
   m_TagString: Untagged
@@ -733,3 +734,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2074628885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2074628883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 616d0b350e462584a855ec2ef593eaa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x: 10
+  y: 0
+  z: 0
+  pos: {x: 0, y: 0, z: 0}

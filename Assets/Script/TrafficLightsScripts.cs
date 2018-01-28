@@ -7,6 +7,7 @@ public class TrafficLightsScripts : MonoBehaviour {
     //Traffic means Trafficlights
     public float scrollSpeed = 5.0f;
     public GameObject[] Traffic;
+	public GameObject trafficLight;
     public float frequency = 0.5f;
     float counter = 0.0f;
     public Transform TrafficSpawnPoint;
@@ -52,7 +53,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 
     void GenerateRandomTraffic()
     {
-        GameObject  newTraffic = Instantiate(Traffic[Random.Range(0, Traffic.Length)], TrafficSpawnPoint.position, Quaternion.identity) as GameObject;
+        GameObject  newTraffic = Instantiate(trafficLight, TrafficSpawnPoint.position, Quaternion.identity) as GameObject;
         newTraffic.transform.parent = transform;
         counter = 1.0f;
     }

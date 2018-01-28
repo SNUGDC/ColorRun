@@ -490,8 +490,10 @@ MonoBehaviour:
   scrollSpeed: 5
   Traffic:
   - {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7, type: 2}
-  - {fileID: 1568712611785838, guid: d5b995f7d4a6c7e4db17682632cee9c2, type: 2}
-  - {fileID: 1768917778214262, guid: 5372650047c7d4746b205fa05009e6e3, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  trafficLight: {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7,
+    type: 2}
   frequency: 0.5
   TrafficSpawnPoint: {fileID: 2074628884}
 --- !u!4 &1360027598

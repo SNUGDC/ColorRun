@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd48759b3fc8de45b39af686ae6de88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 0
 --- !u!61 &1240186991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -489,7 +489,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 5
   Traffic:
-  - {fileID: 1597513595678810, guid: 9e69de497c0904cdeb5b1d49301a268b, type: 2}
+  - {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7, type: 2}
+  - {fileID: 1568712611785838, guid: d5b995f7d4a6c7e4db17682632cee9c2, type: 2}
+  - {fileID: 1768917778214262, guid: 5372650047c7d4746b205fa05009e6e3, type: 2}
   frequency: 0.5
   TrafficSpawnPoint: {fileID: 2074628884}
 --- !u!4 &1360027598

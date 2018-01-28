@@ -18,7 +18,7 @@ public class LoadingToIngame : MonoBehaviour {
 		timecount = timecount - 1;
 		Debug.Log(timecount);
 		if (timecount < 0){
-			SceneManager.LoadScene ("MainMenu");
+			SceneManager.LoadScene ("InGame");
 		}
 	}
 }

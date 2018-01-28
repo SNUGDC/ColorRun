@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class gotoLoading : MonoBehaviour {
 
 	public void gotoLoadingScene() {
-		SceneManager.LoadScene (1);
+		SceneManager.LoadScene ("Loading");
 	}
 }

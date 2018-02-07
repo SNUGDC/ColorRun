@@ -11,7 +11,7 @@ public class PlayerScripts : MonoBehaviour {
 
 	void Start () {
 		burningPoint = 0;
-		gaugeTf = transform.Find ("BurningGauge");
+		gaugeTf = transform.Find ("BurningGaugeCore");
 	}
 		
 	void Update () {

@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerScripts : MonoBehaviour {
 
-	// Use this for initialization
+	public float maxBurningPoint;
+	public float burningPoint;
+	Transform gaugeTf;
+	Vector3 tempScale;
+
 	void Start () {
-		
+		burningPoint = 0;
+		gaugeTf = transform.Find ("BurningGauge");
 	}
-
-	public float speed;
-
-	// Update is called once per frame
+		
 	void Update () {
-
+		tempScale = gaugeTf.localScale;
+		tempScale.x = burningPoint / maxBurningPoint;
+		gaugeTf.localScale = tempScale;
 	}
 }

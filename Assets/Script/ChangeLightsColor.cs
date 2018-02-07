@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeLightsColor : MonoBehaviour {
-
+	
 	//public int[] lightIndex = new int[3]{0,1,2};
 	public int lightIndex;
 	public Sprite Light0;
 	public Sprite Light1;
 	public Sprite Light2;
 	private SpriteRenderer spriteRenderer;
+	public GameObject player;
 
 	void Start () {
+		player = GameObject.Find ("Player");
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		lightIndex = Random.Range (0, 3);
 	}
@@ -47,6 +49,15 @@ public class ChangeLightsColor : MonoBehaviour {
 		if (other.tag == "Player") {
 			if (lightIndex == 2) {
 				SceneManager.LoadScene ("MainMenu");
+			} else if (lightIndex == 1) {
+				if (player.GetComponent<PlayerScripts> ().burningPoint < 45) {
+					player.GetComponent<PlayerScripts> ().burningPoint = 0;
+				}
+				else {
+					player.GetComponent<PlayerScripts> ().burningPoint -= 45;
+				}
+			} else if (lightIndex == 0) {
+				player.GetComponent<PlayerScripts> ().burningPoint += 5;
 			}
 		}
 	}

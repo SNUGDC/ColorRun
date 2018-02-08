@@ -8,7 +8,6 @@ public class Score : MonoBehaviour {
 	public GameObject burning;
 	public GameObject burnPointUIObject;
 	public GameObject scoreUIObject;
-	public int burnPoint;
 	public int score;
 
 	// Use this for initialization

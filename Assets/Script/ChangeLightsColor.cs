@@ -12,9 +12,11 @@ public class ChangeLightsColor : MonoBehaviour {
 	public Sprite Light2;
 	private SpriteRenderer spriteRenderer;
 	public GameObject player;
+	public GameObject burningGaugeObject;
 
 	void Start () {
 		player = GameObject.Find ("Player");
+		burningGaugeObject = GameObject.Find("BurningGaugeCore");
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		lightIndex = Random.Range (0, 3);
 	}
@@ -50,14 +52,14 @@ public class ChangeLightsColor : MonoBehaviour {
 			if (lightIndex == 2) {
 				SceneManager.LoadScene ("MainMenu");
 			} else if (lightIndex == 1) {
-				if (player.GetComponent<PlayerScripts> ().burningPoint < 45) {
-					player.GetComponent<PlayerScripts> ().burningPoint = 0;
+				if (burningGaugeObject.GetComponent<BurningGauge> ().burningPoint < 45) {
+					burningGaugeObject.GetComponent<BurningGauge> ().burningPoint = 0;
 				}
 				else {
-					player.GetComponent<PlayerScripts> ().burningPoint -= 45;
+					burningGaugeObject.GetComponent<BurningGauge> ().burningPoint -= 45;
 				}
 			} else if (lightIndex == 0) {
-				player.GetComponent<PlayerScripts> ().burningPoint += 5;
+				burningGaugeObject.GetComponent<BurningGauge> ().burningPoint += 5;
 			}
 		}
 	}

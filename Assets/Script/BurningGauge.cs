@@ -5,19 +5,35 @@ using UnityEngine.UI;
 
 public class BurningGauge : MonoBehaviour {
 
-	public GameObject burningGaugeCoreUIObject;
 	public Image imageOfBurningGaugeCore;
+	
+	public float maxBurningPoint;
+	public float burningPoint;
+	public bool isPlayerBuring;
 	GameObject player;
+	GameObject burningGaugeObject;
 	void Start () {
 		player = GameObject.Find("Player");
+		burningGaugeObject = GameObject.Find("BurningGaugeCore");
+		isPlayerBuring = false;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		imageOfBurningGaugeCore.fillAmount = player.GetComponent<PlayerScripts> ().burningPoint / 180f;
-		//burningGaugeScale = burningGaugeCoreUIObject.GetComponent<RectTransform>().transform.localScale;
-		//.x= player.GetComponent<PlayerScripts> ().burningPoint
+		imageOfBurningGaugeCore.fillAmount = burningGaugeObject.GetComponent<BurningGauge> ().burningPoint / 180f;
+		
+		if(burningGaugeObject.GetComponent<BurningGauge> ().burningPoint <= 0){
+			isPlayerBuring = false;
+		}
+		else(burningGaugeObject.GetComponent<BurningGauge> ().burningPoint>=180){
+			isPlayerBuring = true;
+		}
+		
+		if(isPlayerBuring){
+			burningGaugeObject.GetComponent<BurningGauge> ().burningPoint -= 36* Time.deltaTime;
+		}
+
 		
 	}
 }

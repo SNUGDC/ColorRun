@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c633dbb0f339664286244df4333cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burningGaugeCoreUIObject: {fileID: 0}
+  burningGaugeCoreUIObject: {fileID: 14883441}
   imageOfBurningGaugeCore: {fileID: 14883443}
 --- !u!1 &321098038
 GameObject:

@@ -6,6 +6,8 @@ public class PlayerScripts : MonoBehaviour {
 
 	public float maxBurningPoint;
 	public float burningPoint;
+	public float currentSpeed;
+	public bool isPlayerBuring;
 	Transform gaugeTf;
 	Vector3 tempScale;
 

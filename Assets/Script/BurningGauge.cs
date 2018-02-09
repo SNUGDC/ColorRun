@@ -26,7 +26,7 @@ public class BurningGauge : MonoBehaviour {
 		if(burningGaugeObject.GetComponent<BurningGauge> ().burningPoint <= 0){
 			isPlayerBuring = false;
 		}
-		else(burningGaugeObject.GetComponent<BurningGauge> ().burningPoint>=180){
+		else if (burningGaugeObject.GetComponent<BurningGauge> ().burningPoint>=180){
 			isPlayerBuring = true;
 		}
 		

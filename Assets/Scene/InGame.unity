@@ -146,8 +146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 238, y: -58}
-  m_SizeDelta: {x: 468.24, y: 450}
+  m_AnchoredPosition: {x: 160.9, y: 139.6}
+  m_SizeDelta: {x: 222.41, y: 38.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14883443
 MonoBehaviour:
@@ -168,7 +168,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c59432c45a1c9481686fbacb2d39e1c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31f8ff5368b85934cbcfdab0aa2fdbb6, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -193,8 +193,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c633dbb0f339664286244df4333cb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  burningGaugeCoreUIObject: {fileID: 14883441}
   imageOfBurningGaugeCore: {fileID: 14883443}
+  maxBurningPoint: 0
+  burningPoint: 0
+  isPlayerBuring: 0
 --- !u!1 &321098038
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +293,6 @@ MonoBehaviour:
   burning: {fileID: 0}
   burnPointUIObject: {fileID: 0}
   scoreUIObject: {fileID: 1477233040}
-  burnPoint: 0
   score: 0
 --- !u!1 &657662967
 GameObject:
@@ -479,10 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd48759b3fc8de45b39af686ae6de88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxBurningPoint: 180
-  burningPoint: 0
   currentSpeed: 0
-  isPlayerBuring: 0
 --- !u!61 &1240186991
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -6,8 +6,6 @@ public class TrafficLightsScripts : MonoBehaviour {
 
 	//Traffic means Trafficlights
 	public float scrollSpeed = 5.0f;
-	public float savedSpeed = 0.0f;
-	public bool isSaved;
 	public GameObject[] Traffic;
 	public GameObject trafficLight;
 	public float frequency = 0.3f;
@@ -22,7 +20,6 @@ public class TrafficLightsScripts : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		isSaved = false;
 		burningGaugeObject = GameObject.Find("BurningGaugeCore");
 		GenerateRandomTraffic();
 	}
@@ -56,7 +53,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 				GenerateRandomTraffic();
 				n += 1;
 				//Debug.Log(n);
-				Debug.Log ("Speed :" + scrollSpeed);
+				Debug.Log ("Speed: " + scrollSpeed);
 			}
 			else
 			{
@@ -92,14 +89,8 @@ public class TrafficLightsScripts : MonoBehaviour {
 
 	void GenerateRandomTraffic()
 	{
-		GameObject  newTraffic = Instantiate(trafficLight, TrafficSpawnPoint.position, Quaternion.identity) as GameObject;
+		GameObject newTraffic = Instantiate(trafficLight, TrafficSpawnPoint.position, Quaternion.identity) as GameObject;
 		newTraffic.transform.parent = transform;
 		counter = 1.0f;
-	}
-
-	void CheckSpeed(){
-		if(burningGaugeObject.GetComponent<BurningGauge> ().isBurning == true){
-			scrollSpeed = burningGaugeObject.GetComponent<BurningGauge> ().savedSpeed;
-		}
 	}
 }

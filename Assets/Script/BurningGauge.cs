@@ -15,6 +15,7 @@ public class BurningGauge : MonoBehaviour {
 	public GameObject trafficLights;
 	public GameObject burningGaugeObject;
 	float startTime;
+	public float startDestroyingTime;
 	public float savedSpeed;
 	public float alphaSpeed;
 
@@ -24,6 +25,7 @@ public class BurningGauge : MonoBehaviour {
 		trafficLights = GameObject.Find ("TrafficLightsSpawn");
 		isReadyForBurning = false;
 		isBurning = false;
+		startDestroyingTime = Time.time - 2f;
 	}
 	
 	// Update is called once per frame
@@ -51,6 +53,8 @@ public class BurningGauge : MonoBehaviour {
 				alphaSpeed = 0f;
 				trafficLights.GetComponent<TrafficLightsScripts> ().scrollSpeed = savedSpeed;
 				Debug.Log ("속도 초기화: " + savedSpeed);
+				startDestroyingTime = Time.time;
+				Debug.Log ("2초 동안 신호등 없음");
 			}
 		} 
 

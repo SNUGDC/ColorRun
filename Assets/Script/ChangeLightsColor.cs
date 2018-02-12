@@ -19,7 +19,10 @@ public class ChangeLightsColor : MonoBehaviour {
 		burningGaugeObject = GameObject.Find("BurningGaugeCore");
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		lightIndex = Random.Range (0, 3);
-
+		if (Time.time < burningGaugeObject.GetComponent<BurningGauge> ().startDestroyingTime + 2){
+			Destroy (gameObject);
+			Debug.Log ("Destroying Seconds: " + (int)(Time.time - burningGaugeObject.GetComponent<BurningGauge> ().startDestroyingTime));
+		}
 	}
 
 	// Update is called once per frame

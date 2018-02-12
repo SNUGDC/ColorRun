@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-	public GameObject burning;
-	public GameObject burnPointUIObject;
 	public GameObject scoreUIObject;
 	public int score;
 

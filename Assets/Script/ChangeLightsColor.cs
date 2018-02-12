@@ -19,10 +19,14 @@ public class ChangeLightsColor : MonoBehaviour {
 		burningGaugeObject = GameObject.Find("BurningGaugeCore");
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		lightIndex = Random.Range (0, 3);
+
 	}
 
 	// Update is called once per frame
 	void Update () {
+		if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == true) {
+			lightIndex = 0;
+		}
 		ChangeLights ();
 	}
 		
@@ -51,15 +55,17 @@ public class ChangeLightsColor : MonoBehaviour {
 		if (other.tag == "Player") {
 			if (lightIndex == 2) {
 				SceneManager.LoadScene ("MainMenu");
-			} else if (lightIndex == 1) {
-				if (burningGaugeObject.GetComponent<BurningGauge> ().burningPoint < 45) {
-					burningGaugeObject.GetComponent<BurningGauge> ().burningPoint = 0;
+			}
+			if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == false) {
+				if (lightIndex == 1) {
+					if (burningGaugeObject.GetComponent<BurningGauge> ().burningPoint < 24) {
+						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint = 0;
+					} else {
+						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint -= 24;
+					}
+				} else if (lightIndex == 0) {
+					burningGaugeObject.GetComponent<BurningGauge> ().burningPoint += 6;
 				}
-				else {
-					burningGaugeObject.GetComponent<BurningGauge> ().burningPoint -= 45;
-				}
-			} else if (lightIndex == 0) {
-				burningGaugeObject.GetComponent<BurningGauge> ().burningPoint += 5;
 			}
 		}
 	}

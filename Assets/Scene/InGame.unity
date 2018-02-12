@@ -195,8 +195,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageOfBurningGaugeCore: {fileID: 14883443}
   maxBurningPoint: 0
-  burningPoint: 0
-  isPlayerBuring: 0
+  burningPoint: 160
+  isReadyForBurning: 0
+  isBurning: 0
+  player: {fileID: 0}
+  trafficLights: {fileID: 0}
+  burningGaugeObject: {fileID: 0}
+  savedSpeed: 0
+  alphaSpeed: 0
 --- !u!1 &321098038
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,6 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollSpeed: 5
+  savedSpeed: 0
+  isSaved: 0
   Traffic:
   - {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7, type: 2}
   - {fileID: 0}
@@ -579,6 +587,8 @@ MonoBehaviour:
     type: 2}
   frequency: 0.5
   TrafficSpawnPoint: {fileID: 2074628884}
+  z: 0.2
+  burningGaugeObject: {fileID: 0}
 --- !u!4 &1360027598
 Transform:
   m_ObjectHideFlags: 0

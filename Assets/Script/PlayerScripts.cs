@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerScripts : MonoBehaviour {
 
 	public GameObject itemsSpawn;
+	public int policePoint;
+	public int sunglassPoint;
 
 	void Start (){
 		itemsSpawn = GameObject.Find ("ItemsSpawn");
+		policePoint = 0;
+		sunglassPoint = 0;
 	}
 
 	void Update(){

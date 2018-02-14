@@ -59,7 +59,12 @@ public class ChangeLightsColor : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
 			if (lightIndex == 2) {
-				SceneManager.LoadScene ("MainMenu");
+				if (player.GetComponent<PlayerScripts> ().policePoint < 1) {
+					SceneManager.LoadScene ("MainMenu");
+				} else {
+					player.GetComponent<PlayerScripts> ().policePoint -= 1;
+					Debug.Log ("게임 오버 1회 방지");
+				}
 			}
 
 			if (lightIndex == 1) {
@@ -71,12 +76,15 @@ public class ChangeLightsColor : MonoBehaviour {
 					Debug.Log ("Item Probability: " + ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability + "%");
 				}
 
-				if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == false) {
+				if (player.GetComponent<PlayerScripts> ().sunglassPoint < 1) {
 					if (burningGaugeObject.GetComponent<BurningGauge> ().burningPoint < 24) {
 						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint = 0;
 					} else {
 						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint -= 24;
 					}
+				} else {
+					player.GetComponent<PlayerScripts> ().sunglassPoint -= 1;
+					Debug.Log ("버닝게이지 감소 1회 방지");
 				}
 			} else if (lightIndex == 0) {
 				ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability += 10;

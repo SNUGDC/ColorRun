@@ -13,9 +13,11 @@ public class ChangeLightsColor : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 	public GameObject player;
 	public GameObject burningGaugeObject;
+	public GameObject ItemsSpawn;
 
 	void Start () {
 		player = GameObject.Find ("Player");
+		ItemsSpawn = GameObject.Find ("ItemsSpawn");
 		burningGaugeObject = GameObject.Find("BurningGaugeCore");
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		lightIndex = Random.Range (0, 3);
@@ -59,14 +61,28 @@ public class ChangeLightsColor : MonoBehaviour {
 			if (lightIndex == 2) {
 				SceneManager.LoadScene ("MainMenu");
 			}
-			if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == false) {
-				if (lightIndex == 1) {
+
+			if (lightIndex == 1) {
+				if (ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability < 20) {
+					ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability = 0;
+					Debug.Log ("Item Probability: " + ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability + "%");
+				} else {
+					ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability -= 20;
+					Debug.Log ("Item Probability: " + ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability + "%");
+				}
+
+				if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == false) {
 					if (burningGaugeObject.GetComponent<BurningGauge> ().burningPoint < 24) {
 						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint = 0;
 					} else {
 						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint -= 24;
 					}
-				} else if (lightIndex == 0) {
+				}
+			} else if (lightIndex == 0) {
+				ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability += 10;
+				Debug.Log ("Item Probability: " + ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability + "%");
+
+				if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == false) {
 					burningGaugeObject.GetComponent<BurningGauge> ().burningPoint += 6;
 				}
 			}

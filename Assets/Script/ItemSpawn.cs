@@ -42,7 +42,6 @@ public class ItemSpawn : MonoBehaviour {
 			itemProbability = 0;
 			GameObject newItem = (GameObject)Instantiate (item, itemSpawnPoint.position, Quaternion.identity) as GameObject;
 			newItem.transform.parent = transform;
-			Debug.Log ("아이템 생성");
 		}
 	}
 }

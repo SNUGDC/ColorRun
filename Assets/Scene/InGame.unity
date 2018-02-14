@@ -235,6 +235,7 @@ MonoBehaviour:
   itemProbability: 0
   item: {fileID: 1015179658005446, guid: 89c20b1fa43de4a3d9c9ccdc6550be5a, type: 2}
   itemSpawnPoint: {fileID: 2074628884}
+  trafficLights: {fileID: 0}
 --- !u!4 &208733420
 Transform:
   m_ObjectHideFlags: 0

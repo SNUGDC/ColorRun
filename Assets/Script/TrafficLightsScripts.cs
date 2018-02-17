@@ -1,45 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TrafficLightsScripts : MonoBehaviour {
 
 	//Traffic means Trafficlights
-	public float scrollSpeed = 5.0f;
-	public GameObject[] Traffic;
+	Queue<GameObject> storedTraffics = new Queue<GameObject>();
 	public GameObject trafficLight;
-	public float frequency = 0.3f;
 	float counter = 0.0f;
 	public Transform TrafficSpawnPoint;
-	float x = 0.0f;
-	float y = 1.6f;
+	float logBase = 1.6f;
 	public float z = 0.2f;
 	int n = 0;
-	public GameObject burningGaugeObject;
+	float scoreTime;
+	PlayerValue PV;
 
-
+	void Awake()
+	{	
+		PV = FindObjectOfType<PlayerValue>();
+	}
+	void OnEnable()
+	{
+		PV.scrollSpeed = 3.0f;
+		PV.scoreSpeed = 3f;
+		PV.frequency = 0.3f;
+	}
 	// Use this for initialization
 	void Start () {
-		burningGaugeObject = GameObject.Find("BurningGaugeCore");
-		GenerateRandomTraffic();
-	}
 
+		for (int i = 0; i < 10; i++)
+		{
+			var go = Instantiate(trafficLight, transform);
+			storedTraffics.Enqueue(go);
+			go.SetActive(false);
+		}
+		GenerateRandomTraffic();
+		PV.scrollSpeed = 3.0f;
+		PV.scoreSpeed = 3f;
+		PV.frequency = 0.3f;
+		PV.initTime = Time.time;
+		scoreTime = Time.time;
+		Debug.Log("Start");
+	}
+	float GetTime()
+	{
+		return Time.time - PV.initTime;
+	}
 	// Update is called once per frame
 	void Update () {
 		
-
-		float k = Mathf.Log(x, y) + 5;
-		if (k <= 0.0f)
+		if (GetTime() <= 1.0f)
 		{
-			scrollSpeed = 5.0f;
-			frequency = 0.3f;
-			x += 1 * Time.deltaTime;
+			
 		}
 		else
 		{
-			scrollSpeed = Mathf.Log(x, y) + 5 + burningGaugeObject.GetComponent<BurningGauge> ().alphaSpeed;
-			frequency = Mathf.Log(scrollSpeed, 3.0f) - 1.2f;
-			x += 1 * Time.deltaTime;
+			PV.scrollSpeed += Mathf.Log(2.718281f, logBase) * Time.deltaTime / GetTime() + PV.alphaSpeed*Time.deltaTime;
+			PV.scoreSpeed += Mathf.Log(2.718281f, logBase) * Time.deltaTime / (Time.time - scoreTime) + PV.alphaSpeed*Time.deltaTime;
+			PV.frequency = PV.scrollSpeed/20 * (GetTime()/60 + 1);
 		}
 
 
@@ -53,11 +72,11 @@ public class TrafficLightsScripts : MonoBehaviour {
 				GenerateRandomTraffic();
 				n += 1;
 				//Debug.Log(n);
-				Debug.Log ("Speed: " + scrollSpeed);
+				Debug.Log ("Speed: " + PV.scrollSpeed);
 			}
 			else
 			{
-				counter -= Time.deltaTime * frequency;
+				counter -= Time.deltaTime * PV.frequency;
 			}
 
 		}
@@ -67,15 +86,19 @@ public class TrafficLightsScripts : MonoBehaviour {
 		}
 
 
-		//scrolling
+		
 		GameObject currentChild;
-		for(int i=0; i<transform.childCount; i++)
+		for(int i=0; i < TrafficSpawnPoint.childCount; i++)
 		{
-			currentChild = transform.GetChild(i).gameObject;
+			currentChild = TrafficSpawnPoint.GetChild(i).gameObject;
 			ScrollTraffic(currentChild);
-			if(currentChild.transform.position.x<=-15.0f)
-			{
-				Destroy(currentChild);
+			if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)){
+				currentChild.GetComponent<ChangeLightsColor>().ChangeLight();
+			}
+			if(currentChild.transform.position.x<=-15.0f){
+				storedTraffics.Enqueue(currentChild);
+				currentChild.transform.SetParent(transform);
+				currentChild.SetActive(false);
 			}
 
 		}
@@ -84,13 +107,15 @@ public class TrafficLightsScripts : MonoBehaviour {
 
 	void ScrollTraffic(GameObject currentTraffic)
 	{
-		currentTraffic.transform.position -= Vector3.right * (scrollSpeed * Time.deltaTime);
+		currentTraffic.transform.position -= Vector3.right * (PV.scrollSpeed * Time.deltaTime);
 	}
 
 	void GenerateRandomTraffic()
 	{
-		GameObject newTraffic = Instantiate(trafficLight, TrafficSpawnPoint.position, Quaternion.identity) as GameObject;
-		newTraffic.transform.parent = transform;
+		var go = storedTraffics.Dequeue();
+		go.transform.SetParent(TrafficSpawnPoint);
+		go.transform.position = TrafficSpawnPoint.position;
+		go.SetActive(true);
 		counter = 1.0f;
 	}
 }

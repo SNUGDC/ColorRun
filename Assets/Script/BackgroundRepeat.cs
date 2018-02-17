@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class BackgroundRepeat : MonoBehaviour {
 
-	public const float scrollSpeed = 0.2f; 
 	private Material thisMaterial;
-
+	PlayerValue PV;
+	void Awake(){
+		PV = FindObjectOfType<PlayerValue>();
+	}
 	void Start () {
 		thisMaterial = GetComponent<Renderer>().material; 
 	}
 
 	void Update () {
 		Vector2 newOffset = thisMaterial.mainTextureOffset;
-		newOffset.Set(newOffset.x + (scrollSpeed * Time.deltaTime), 0);
+		newOffset.Set(newOffset.x + (PV.scrollSpeed * 0.05f * Time.deltaTime), 0);
 		thisMaterial.mainTextureOffset = newOffset;
 	}
 }

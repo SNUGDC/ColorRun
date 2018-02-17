@@ -6,92 +6,85 @@ using UnityEngine.SceneManagement;
 public class ChangeLightsColor : MonoBehaviour {
 	
 	//public int[] lightIndex = new int[3]{0,1,2};
-	public int lightIndex;
-	public Sprite Light0;
-	public Sprite Light1;
-	public Sprite Light2;
-	private SpriteRenderer spriteRenderer;
-	public GameObject player;
-	public GameObject burningGaugeObject;
-	public GameObject ItemsSpawn;
 
+	//index = 0 : green
+	public int lightIndex;
+	public int maxIndex = 3;
+	public Sprite[] lights;
+	public GameObject player;
+	PlayerValue PV;
+
+	void Awake(){
+		PV = FindObjectOfType<PlayerValue>();
+	}
 	void Start () {
 		player = GameObject.Find ("Player");
-		ItemsSpawn = GameObject.Find ("ItemsSpawn");
-		burningGaugeObject = GameObject.Find("BurningGaugeCore");
-		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
-		lightIndex = Random.Range (0, 3);
-		if (Time.time < burningGaugeObject.GetComponent<BurningGauge> ().startDestroyingTime + 2){
+		lightIndex = Random.Range (0, maxIndex);
+		if (Time.time < PV.startDestroyingTime + 2){
 			Destroy (gameObject);
-			Debug.Log ("Destroying Seconds: " + (int)(Time.time - burningGaugeObject.GetComponent<BurningGauge> ().startDestroyingTime));
+			Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
 		}
+	}
+	void OnEnabled()
+	{
+		lightIndex = Random.Range(0,maxIndex);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == true) {
+		if (PV.isBurning == true) {
 			lightIndex = 0;
 		}
-		ChangeLights ();
+		ChangeSprite ();
 	}
 		
-	void ChangeLights(){
-		if (lightIndex == 0) {
-			spriteRenderer.sprite = Light0;
-		} else if (lightIndex == 1) {
-			spriteRenderer.sprite = Light1;
-		} else if (lightIndex == 2) {
-			spriteRenderer.sprite = Light2;
-		}
-		if (Input.GetKeyDown (KeyCode.Space) || (Input.GetMouseButtonDown(0))){
-			if (lightIndex == 0) {
-				lightIndex = 1;
-			}
-			else if (lightIndex == 1) {
-				lightIndex = 2;
-			}
-			else if (lightIndex == 2) {
-				lightIndex = 0;
-			}
+	void ChangeSprite(){
+		GetComponent<SpriteRenderer>().sprite = lights[lightIndex];
+	}
+	public void ChangeLight()
+	{
+		lightIndex++;
+		if(lightIndex >= maxIndex){
+			lightIndex = 0 ;
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
 			if (lightIndex == 2) {
-				if (player.GetComponent<PlayerScripts> ().policePoint < 1) {
+				if (PV.policePoint < 1) {
 					SceneManager.LoadScene ("MainMenu");
 				} else {
-					player.GetComponent<PlayerScripts> ().policePoint -= 1;
+					PV.policePoint -= 1;
 					Debug.Log ("게임 오버 1회 방지");
 				}
 			}
 
 			if (lightIndex == 1) {
-				if (ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability < 20) {
-					ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability = 0;
-					Debug.Log ("Item Probability: " + ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability + "%");
+				if (PV.itemProbability < 20) {
+					PV.itemProbability = 0;
+					Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 				} else {
-					ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability -= 20;
-					Debug.Log ("Item Probability: " + ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability + "%");
+					PV.itemProbability -= 20;
+					Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 				}
 
-				if (player.GetComponent<PlayerScripts> ().sunglassPoint < 1) {
-					if (burningGaugeObject.GetComponent<BurningGauge> ().burningPoint < 24) {
-						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint = 0;
+				if (PV.sunglassPoint < 1) {
+					if (PV.burningPoint < 24) {
+						PV.burningPoint = 0;
 					} else {
-						burningGaugeObject.GetComponent<BurningGauge> ().burningPoint -= 24;
+						PV.burningPoint -= 24;
 					}
 				} else {
-					player.GetComponent<PlayerScripts> ().sunglassPoint -= 1;
+					PV.sunglassPoint -= 1;
 					Debug.Log ("버닝게이지 감소 1회 방지");
 				}
 			} else if (lightIndex == 0) {
-				ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability += 10;
-				Debug.Log ("Item Probability: " + ItemsSpawn.GetComponent<ItemSpawn> ().itemProbability + "%");
+				PV.itemProbability += 10;
+				Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 
-				if (burningGaugeObject.GetComponent<BurningGauge> ().isBurning == false) {
-					burningGaugeObject.GetComponent<BurningGauge> ().burningPoint += 6;
+				if (PV.isBurning == false) {
+					PV.burningPoint += 6;
 				}
 			}
 		}

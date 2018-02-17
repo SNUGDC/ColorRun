@@ -22,12 +22,12 @@ public class Item : MonoBehaviour {
 	}
 	ItemType itemtype;
 	private SpriteRenderer spriteRenderer;
-	public GameObject player;
-	public GameObject burningGaugeObject;
-		
+	PlayerValue PV;
+	
+	void Awake(){
+		PV = FindObjectOfType<PlayerValue>();
+	}
 	void Start () {
-		player = GameObject.Find ("Player");
-		burningGaugeObject = GameObject.Find("BurningGaugeCore");
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 		itemIndex = Random.Range (0, 100);
 		selectItem ();
@@ -79,19 +79,19 @@ public class Item : MonoBehaviour {
 		if (other.tag == "Player") {
 			Destroy (gameObject);
 			if (itemtype == ItemType.police) {
-				player.GetComponent<PlayerScripts> ().policePoint += 1;
+				PV.policePoint += 1;
 			} else if (itemtype == ItemType.sunglass) {
-				player.GetComponent<PlayerScripts> ().sunglassPoint += 1;
+				PV.sunglassPoint += 1;
 			} else if (itemtype == ItemType.ion) {
-				burningGaugeObject.GetComponent<BurningGauge> ().burningPoint += 12;
+				PV.burningPoint += 12;
 				Debug.Log ("버닝 포인트 12 증가");
 			} else if (itemtype == ItemType.energy) {
-				burningGaugeObject.GetComponent<BurningGauge> ().burningPoint += 30;
+				PV.burningPoint += 30;
 				Debug.Log ("버닝 포인트 30 증가");
 			} else if (itemtype == ItemType.water) {
-				//체감 속도 소폭 감소
+				PV.scrollSpeed *= 0.8f;
 			} else if (itemtype == ItemType.coffee) {
-				//체감 속도 대폭 감소
+				PV.scrollSpeed *= 0.6f; 
 			}
 		}
 	}

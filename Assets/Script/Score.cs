@@ -6,8 +6,13 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 
 	public GameObject scoreUIObject;
-	public int score;
+	public float score;
+	PlayerValue PV;
 
+	void Awake()
+	{
+		PV = FindObjectOfType<PlayerValue>();
+	}
 	// Use this for initialization
 	void Start () {
 		scoreUIObject.GetComponent<Text> ().text = "이동거리: 0m";
@@ -15,7 +20,7 @@ public class Score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		score += 1;
-		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + score + "m";
+		score = score + PV.scoreSpeed*Time.deltaTime;
+		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + (int)(score/1000f) + "m";
 	}
 }

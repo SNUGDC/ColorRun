@@ -194,16 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageOfBurningGaugeCore: {fileID: 14883443}
-  maxBurningPoint: 0
-  burningPoint: 160
-  isReadyForBurning: 0
-  isBurning: 0
-  player: {fileID: 0}
-  trafficLights: {fileID: 0}
-  burningGaugeObject: {fileID: 0}
   startDestroyingTime: 0
-  savedSpeed: 0
-  alphaSpeed: 0
 --- !u!1 &208733418
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +223,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemGeneratingIndex: 0
-  itemProbability: 0
   item: {fileID: 1015179658005446, guid: 89c20b1fa43de4a3d9c9ccdc6550be5a, type: 2}
   itemSpawnPoint: {fileID: 2074628884}
   trafficLights: {fileID: 0}
@@ -531,6 +521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemsSpawn: {fileID: 0}
+  policePoint: 0
+  sunglassPoint: 0
 --- !u!61 &1240186991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -602,6 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360027598}
   - component: {fileID: 1360027597}
+  - component: {fileID: 1360027599}
   m_Layer: 0
   m_Name: TrafficLightsSpawn
   m_TagString: Untagged
@@ -620,17 +613,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a013ab7b041fa4c804af8235a8f569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 5
-  Traffic:
-  - {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
   trafficLight: {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7,
     type: 2}
-  frequency: 0.5
   TrafficSpawnPoint: {fileID: 2074628884}
   z: 0.2
-  burningGaugeObject: {fileID: 0}
 --- !u!4 &1360027598
 Transform:
   m_ObjectHideFlags: 0
@@ -644,6 +630,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1360027599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360027596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4afdf5997fd0c44a80bb48560a88975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 0
+  scoreSpeed: 0
+  frequency: 0
+  burningPoint: 0
+  isBurning: 0
+  isReadyForBurning: 0
+  startDestroyingTime: 0
+  savedScrollSpeed: 0
+  savedScoreSpeed: 0
+  alphaSpeed: 0
+  itemProbability: 0
+  initTime: 0
+  policePoint: 0
+  sunglassPoint: 0
 --- !u!1 &1423585573
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.15862083, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

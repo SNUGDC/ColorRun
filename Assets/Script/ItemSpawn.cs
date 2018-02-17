@@ -5,14 +5,18 @@ using UnityEngine;
 public class ItemSpawn : MonoBehaviour {
 
 	public int itemGeneratingIndex;
-	public int itemProbability;
 	public GameObject item;
 	public Transform itemSpawnPoint;
 	public GameObject trafficLights;
 
+	PlayerValue PV;
+
+	void Awake(){
+		PV = FindObjectOfType<PlayerValue>();
+	}
 	// Use this for initialization
 	void Start () {
-		itemProbability = 0;
+		PV.itemProbability = 0;
 		trafficLights = GameObject.Find ("TrafficLightsSpawn");
 	}
 	
@@ -32,14 +36,14 @@ public class ItemSpawn : MonoBehaviour {
 	}
 
 	void ScrollItem(GameObject currentItem) {
-		currentItem.transform.position -= Vector3.right * (trafficLights.GetComponent<TrafficLightsScripts> ().scrollSpeed * Time.deltaTime);
+		currentItem.transform.position -= Vector3.right * (PV.scrollSpeed * Time.deltaTime);
 	}
 
 	public void GenerateRandomItem() {
 		
 		itemGeneratingIndex = Random.Range (0, 100);
-		if (itemGeneratingIndex < itemProbability) {
-			itemProbability = 0;
+		if (itemGeneratingIndex < PV.itemProbability) {
+			PV.itemProbability = 0;
 			GameObject newItem = (GameObject)Instantiate (item, itemSpawnPoint.position, Quaternion.identity) as GameObject;
 			newItem.transform.parent = transform;
 		}

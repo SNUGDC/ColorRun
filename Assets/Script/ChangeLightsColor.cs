@@ -51,10 +51,13 @@ public class ChangeLightsColor : MonoBehaviour {
 		if (other.tag == "Player") {
 			if (lightIndex == 2) {
 				if (PV.policePoint < 1) {
+					SoundManager.Play(MusicType.GameOver);
 					SceneManager.LoadScene ("MainMenu");
 				} else {
 					PV.policePoint -= 1;
+					SoundManager.Play(SoundType.PassRedWithPolice);
 					Debug.Log ("게임 오버 1회 방지");
+					
 				}
 			}
 
@@ -73,8 +76,10 @@ public class ChangeLightsColor : MonoBehaviour {
 					} else {
 						PV.burningPoint -= 24;
 					}
+					SoundManager.Play(SoundType.PassYellow);
 				} else {
 					PV.sunglassPoint -= 1;
+					SoundManager.Play(SoundType.PassYellowWithSunglass);
 					Debug.Log ("버닝게이지 감소 1회 방지");
 				}
 			} else if (lightIndex == 0) {
@@ -84,6 +89,7 @@ public class ChangeLightsColor : MonoBehaviour {
 				if (PV.isBurning == false) {
 					PV.burningPoint += 6;
 				}
+				SoundManager.Play(SoundType.PassGreen);
 			}
 		}
 	}

@@ -80,19 +80,25 @@ public class Item : MonoBehaviour {
 			Destroy (gameObject);
 			if (itemtype == ItemType.police) {
 				PV.policePoint += 1;
+				SoundManager.Play(SoundType.ItemEquip);
 			} else if (itemtype == ItemType.sunglass) {
 				PV.sunglassPoint += 1;
+				SoundManager.Play(SoundType.ItemEquip);
 			} else if (itemtype == ItemType.ion) {
 				PV.burningPoint += 12;
+				SoundManager.Play(SoundType.ItemBurning);
 				Debug.Log ("버닝 포인트 12 증가");
 			} else if (itemtype == ItemType.energy) {
 				PV.burningPoint += 30;
+				SoundManager.Play(SoundType.ItemBurning);
 				Debug.Log ("버닝 포인트 30 증가");
 			} else if (itemtype == ItemType.water) {
 				PV.scrollSpeed *= 0.8f;
+				SoundManager.Play(SoundType.ItemSpeed);
 				//ChangeInitTime(0.0f);
 			} else if (itemtype == ItemType.coffee) {
 				PV.scrollSpeed *= 0.6f; 
+				SoundManager.Play(SoundType.ItemSpeed);
 				//ChangeInitTime(0.0f);
 			}
 		}

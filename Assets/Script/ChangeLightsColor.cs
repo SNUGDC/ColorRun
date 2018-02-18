@@ -11,21 +11,19 @@ public class ChangeLightsColor : MonoBehaviour {
 	public int lightIndex;
 	public int maxIndex = 3;
 	public Sprite[] lights;
-	public GameObject player;
 	PlayerValue PV;
 
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
 	}
 	void Start () {
-		player = GameObject.Find ("Player");
-		lightIndex = Random.Range (0, maxIndex);
+		SetRandomLight();
 		if (Time.time < PV.startDestroyingTime + 2){
 			Destroy (gameObject);
 			Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
 		}
 	}
-	void OnEnabled()
+	public void SetRandomLight()
 	{
 		lightIndex = Random.Range(0,maxIndex);
 	}

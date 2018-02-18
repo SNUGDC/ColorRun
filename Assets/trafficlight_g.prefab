@@ -54,7 +54,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.8, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -65,7 +65,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 8}
+  m_Size: {x: 0.5, y: 4.5}
   m_EdgeRadius: 0
 --- !u!114 &114723984156816946
 MonoBehaviour:
@@ -81,12 +81,9 @@ MonoBehaviour:
   lightIndex: 0
   maxIndex: 3
   lights:
-  - {fileID: 21300000, guid: 9c656305563784c389afcd5535f2e0eb, type: 3}
-  - {fileID: 21300000, guid: 8c57392a6d9994b05811f8b3cd69ce26, type: 3}
-  - {fileID: 21300000, guid: f98eac5f073834284a6c6ecc9ced9969, type: 3}
-  player: {fileID: 0}
-  burningGaugeObject: {fileID: 0}
-  ItemsSpawn: {fileID: 0}
+  - {fileID: 21300000, guid: 2f1703433ce6d9e43bd97e1f54f0882d, type: 3}
+  - {fileID: 21300000, guid: 2d28cc857d7bc6442affb1548ba9c4a5, type: 3}
+  - {fileID: 21300000, guid: 48eaf7e02e457c34fb77c3a9f0901f34, type: 3}
 --- !u!212 &212209863027195110
 SpriteRenderer:
   m_ObjectHideFlags: 1

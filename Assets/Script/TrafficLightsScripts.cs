@@ -97,6 +97,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 			}
 			if(currentChild.transform.position.x<=-15.0f){
 				storedTraffics.Enqueue(currentChild);
+				currentChild.GetComponent<ChangeLightsColor>().SetRandomLight();
 				currentChild.transform.SetParent(transform);
 				currentChild.SetActive(false);
 			}

@@ -90,9 +90,16 @@ public class Item : MonoBehaviour {
 				Debug.Log ("버닝 포인트 30 증가");
 			} else if (itemtype == ItemType.water) {
 				PV.scrollSpeed *= 0.8f;
+				//ChangeInitTime(0.0f);
 			} else if (itemtype == ItemType.coffee) {
 				PV.scrollSpeed *= 0.6f; 
+				//ChangeInitTime(0.0f);
 			}
 		}
+	}
+	
+	void ChangeInitTime(float f){
+		float time = Time.time - PV.initTime;
+		PV.initTime += (1-f)*time;
 	}
 }

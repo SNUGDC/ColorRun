@@ -19,4 +19,5 @@ public class PlayerValue : MonoBehaviour
     public float initTime;
     public int policePoint;
     public int sunglassPoint;
+    public int colorOfPlayer;
 }

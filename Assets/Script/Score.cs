@@ -21,6 +21,6 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		score = score + PV.scoreSpeed*Time.deltaTime;
-		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + (int)(score/1000f) + "m";
+		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + (int)(score) + "m";
 	}
 }

@@ -93,17 +93,23 @@ public class Item : MonoBehaviour {
 				SoundManager.Play(SoundType.ItemBurning);
 				Debug.Log ("버닝 포인트 30 증가");
 			} else if (itemtype == ItemType.water) {
-				PV.scrollSpeed *= 0.8f;
+				//PV.scrollSpeed *= 0.8f;
 				SoundManager.Play(SoundType.ItemSpeed);
-				//ChangeInitTime(0.0f);
+				SlowSpeedTemp(0.8f, 3f);
 			} else if (itemtype == ItemType.coffee) {
 				PV.scrollSpeed *= 0.6f; 
 				SoundManager.Play(SoundType.ItemSpeed);
 				//ChangeInitTime(0.0f);
+				SlowSpeedTemp(0.6f, 3f);
 			}
 		}
 	}
-	
+
+	void SlowSpeedTemp(float speed, float duration){
+		float delta = (1 - speed) * PV.scrollSpeed;
+		PV.scrollSpeed -= delta;
+		ItemSpawn.StartTemp (Time.time, duration, delta);
+	}
 	void ChangeInitTime(float f){
 		float time = Time.time - PV.initTime;
 		PV.initTime += (1-f)*time;

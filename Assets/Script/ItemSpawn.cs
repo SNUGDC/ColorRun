@@ -31,8 +31,17 @@ public class ItemSpawn : MonoBehaviour {
 			{
 				Destroy(currentChild);
 			}
-
 		}
+
+		if (Time.time < itemStartTime + duration) {
+			PV.scrollSpeed += speed * Time.deltaTime / duration;
+		}
+	}
+	static float itemStartTime, duration, speed;
+	public static void StartTemp(float t, float d, float s){
+		itemStartTime = t;
+		duration = d;
+		speed = s;
 	}
 
 	void ScrollItem(GameObject currentItem) {

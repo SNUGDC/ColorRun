@@ -723,7 +723,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a013ab7b041fa4c804af8235a8f569, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trafficLight: {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7,
+  trafficLight_0: {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7,
+    type: 2}
+  trafficLight_1: {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7,
+    type: 2}
+  trafficLight_2: {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7,
+    type: 2}
+  trafficLight_3: {fileID: 1081493397145822, guid: 0a0a02429e1429c48aaaf8c4e2970fd7,
     type: 2}
   TrafficSpawnPoint: {fileID: 2074628884}
   z: 0.2

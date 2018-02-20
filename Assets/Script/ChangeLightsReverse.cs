@@ -10,6 +10,7 @@ public class ChangeLightsReverse : MonoBehaviour {
 	//index = 0 : green
 	//when clicked, trafficLight_reverse will be changed reversely : lightIndexReverse--;
 
+	public int trafficType = 3;
 	public int lightIndexReverse;
 	public int maxIndexReverse = 3;
 	public Sprite[] lightsReverse;
@@ -19,13 +20,13 @@ public class ChangeLightsReverse : MonoBehaviour {
 		PV = FindObjectOfType<PlayerValue>();
 	}
 	void Start () {
-		SetRandomLight();
+		SetRandomLightReverse();
 		if (Time.time < PV.startDestroyingTime + 2){
 			Destroy (gameObject);
 			Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
 		}
 	}
-	public void SetRandomLight()
+	public void SetRandomLightReverse()
 	{
 		lightIndexReverse = Random.Range(0,maxIndexReverse);
 	}
@@ -41,11 +42,11 @@ public class ChangeLightsReverse : MonoBehaviour {
 	void ChangeSprite(){
 		GetComponent<SpriteRenderer>().sprite = lightsReverse[lightIndexReverse];
 	}
-	public void ChangeLight()
+	public void ChangeLightReverse()
 	{
 		lightIndexReverse--;
-		if(lightIndexReverse >= maxIndexReverse){
-			lightIndexReverse = 0 ;
+		if(lightIndexReverse < 0){
+			lightIndexReverse = maxIndexReverse-1 ;
 		}
 	}
 

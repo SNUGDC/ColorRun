@@ -8,6 +8,7 @@ public class ChangeLights4Color : MonoBehaviour {
 	//public int[] lightIndex = new int[4]{0,1,2,3};
 
 	//index = 0 : green
+	public int trafficType = 1;
 	public int lightIndexOf4Colors;
 	public int maxIndexOf4Colors = 4;
 	public Sprite[] lightsOf4Colors;
@@ -17,13 +18,14 @@ public class ChangeLights4Color : MonoBehaviour {
 		PV = FindObjectOfType<PlayerValue>();
 	}
 	void Start () {
-		SetRandomLight();
+
+		SetRandomLightOf4Colors();
 		if (Time.time < PV.startDestroyingTime + 2){
 			Destroy (gameObject);
 			Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
 		}
 	}
-	public void SetRandomLight()
+	public void SetRandomLightOf4Colors()
 	{
 		lightIndexOf4Colors = Random.Range(0,maxIndexOf4Colors);
 	}
@@ -39,7 +41,7 @@ public class ChangeLights4Color : MonoBehaviour {
 	void ChangeSprite(){
 		GetComponent<SpriteRenderer>().sprite = lightsOf4Colors[lightIndexOf4Colors];
 	}
-	public void ChangeLight()
+	public void ChangeLightOf4Colors()
 	{
 		lightIndexOf4Colors++;
 		if(lightIndexOf4Colors >= maxIndexOf4Colors){

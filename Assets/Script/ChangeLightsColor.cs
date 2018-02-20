@@ -8,6 +8,7 @@ public class ChangeLightsColor : MonoBehaviour {
 	//public int[] lightIndex = new int[3]{0,1,2};
 
 	//index = 0 : green
+	public int trafficType = 0;
 	public int lightIndex;
 	public int maxIndex = 3;
 	public Sprite[] lights;

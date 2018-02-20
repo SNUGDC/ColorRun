@@ -8,6 +8,7 @@ public class ChangeLights2Color : MonoBehaviour {
 	//public int[] lightIndex = new int[2]{0,1};
 
 	//index = 0 : green
+	public int trafficType = 2;
 	public int lightIndexOf2Colors;
 	public int maxIndexOf2Colors = 2;
 	public Sprite[] lightsOf2Colors;
@@ -17,13 +18,13 @@ public class ChangeLights2Color : MonoBehaviour {
 		PV = FindObjectOfType<PlayerValue>();
 	}
 	void Start () {
-		SetRandomLight();
+		SetRandomLightOf2Colors();
 		if (Time.time < PV.startDestroyingTime + 2){
 			Destroy (gameObject);
 			Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
 		}
 	}
-	public void SetRandomLight()
+	public void SetRandomLightOf2Colors()
 	{
 		lightIndexOf2Colors = Random.Range(0,maxIndexOf2Colors);
 	}
@@ -33,13 +34,13 @@ public class ChangeLights2Color : MonoBehaviour {
 		if (PV.isBurning == true) {
 			lightIndexOf2Colors = 0;
 		}
-		ChangeSprite ();
+		ChangeSprite();
 	}
 		
 	void ChangeSprite(){
 		GetComponent<SpriteRenderer>().sprite = lightsOf2Colors[lightIndexOf2Colors];
 	}
-	public void ChangeLight()
+	public void ChangeLightOf2Colors()
 	{
 		lightIndexOf2Colors++;
 		if(lightIndexOf2Colors >= maxIndexOf2Colors){

@@ -7,7 +7,10 @@ public class TrafficLightsScripts : MonoBehaviour {
 
 	//Traffic means Trafficlights
 	Queue<GameObject> storedTraffics = new Queue<GameObject>();
-	public GameObject trafficLight;
+	public GameObject trafficLight_0;
+	public GameObject trafficLight_1;
+	public GameObject trafficLight_2;
+	public GameObject trafficLight_3;
 	float counter = 0.0f;
 	public Transform TrafficSpawnPoint;
 	float logBase = 1.6f;
@@ -28,12 +31,14 @@ public class TrafficLightsScripts : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-
-		for (int i = 0; i < 10; i++)
-		{
-			var go = Instantiate(trafficLight, transform);
-			storedTraffics.Enqueue(go);
-			go.SetActive(false);
+			int randTrafficIndex=0;
+		for (int i = 0; i < 15; i++)
+		{	//randTrafficIndex = Random.Range(0,4); // 0: 3색, 1: 4색, 2: 2색, 3: 거꾸로
+			if(randTrafficIndex == 0){
+				var go = Instantiate(trafficLight_0, transform);
+				storedTraffics.Enqueue(go);
+				go.SetActive(false);
+			}
 		}
 		GenerateRandomTraffic();
 		PV.scrollSpeed = 3.0f;
@@ -88,16 +93,27 @@ public class TrafficLightsScripts : MonoBehaviour {
 
 		
 		GameObject currentChild;
+
 		for(int i=0; i < TrafficSpawnPoint.childCount; i++)
-		{
-			currentChild = TrafficSpawnPoint.GetChild(i).gameObject;
+		{	currentChild = TrafficSpawnPoint.GetChild(i).gameObject;
+			
 			ScrollTraffic(currentChild);
 			if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)){
 				currentChild.GetComponent<ChangeLightsColor>().ChangeLight();
+				/*
+				currentChild.GetComponent<ChangeLights4Color>().ChangeLightOf4Colors();
+				currentChild.GetComponent<ChangeLights2Color>().ChangeLightOf2Colors();
+				currentChild.GetComponent<ChangeLightsReverse>().ChangeLightReverse();
+				*/
 			}
 			if(currentChild.transform.position.x<=-15.0f){
 				storedTraffics.Enqueue(currentChild);
 				currentChild.GetComponent<ChangeLightsColor>().SetRandomLight();
+				/*
+				currentChild.GetComponent<ChangeLights4Color>().SetRandomLightOf4Colors();
+				currentChild.GetComponent<ChangeLights2Color>().SetRandomLightOf2Colors();
+				currentChild.GetComponent<ChangeLightsReverse>().SetRandomLightReverse();
+				*/
 				currentChild.transform.SetParent(transform);
 				currentChild.SetActive(false);
 			}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4089723196768876}
   - component: {fileID: 212252252249556744}
   - component: {fileID: 61655054473943726}
-  - component: {fileID: 114162498901429764}
+  - component: {fileID: 114762375721704222}
   m_Layer: 0
   m_Name: trafficlight_reverse
   m_TagString: trafficlight
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 4.5}
   m_EdgeRadius: 0
---- !u!114 &114162498901429764
+--- !u!114 &114762375721704222
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,13 +75,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1689558161150788}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dba6cf64a3e85484597c9c6aadb3bbae, type: 3}
+  m_Script: {fileID: 11500000, guid: 05fd497756996c04f8dbce7b42d6c6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   trafficType: 3
-  lightIndexReverse: 0
-  maxIndexReverse: 3
-  lightsReverse:
+  lightIndex: 0
+  maxIndex: 3
+  isReversed: 1
+  lights:
   - {fileID: 21300000, guid: 343088910019baf41b599f2900ce1074, type: 3}
   - {fileID: 21300000, guid: b0d0d603777586c458c317ef33fd4370, type: 3}
   - {fileID: 21300000, guid: 3e736c886e8ab1b4faa14da230855c54, type: 3}

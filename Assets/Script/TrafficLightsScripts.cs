@@ -8,24 +8,26 @@ public class TrafficLightsScripts : MonoBehaviour {
 	//Traffic means Trafficlights
 	static Queue<GameObject> storedTraffics;
 	static GameObject instance;
-	public GameObject trafficLight_0;
-	public GameObject trafficLight_1;
-	public GameObject trafficLight_2;
-	public GameObject trafficLight_3;
+	public GameObject standardTrafficLight;
 	float counter = 0.0f;
 	public Transform spawnPoint;
 	public float z = 0.2f;
 	int n = 0;
 	PlayerValue PV;
 
-	public static GameObject PullNewTraffic() {
+	public static GameObject PullNewTraffic(int typeNum = -1) {
+		if(typeNum < 0) 
+			typeNum = Random.Range(0,4);
+
 		if (storedTraffics.Count > 0) {
 			var go = storedTraffics.Dequeue();
+			go.GetComponent<ChangeLightsColor>().SetTypeOfTraffic(typeNum);
 			go.SetActive(true);
 			//Debug.Log("Pulled traffic from pool");
 			return go;
 		} else {
-			var go = Instantiate(instance.GetComponent<TrafficLightsScripts>().trafficLight_0, instance.transform);
+			var go = Instantiate(instance.GetComponent<TrafficLightsScripts>().standardTrafficLight, instance.transform);
+			go.GetComponent<ChangeLightsColor>().SetTypeOfTraffic(typeNum);
 			//Debug.Log("Created new traffic");
 			return go;
 		}

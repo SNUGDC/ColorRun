@@ -20,4 +20,5 @@ public class PlayerValue : MonoBehaviour
     public int policePoint;
     public int sunglassPoint;
     public int colorOfPlayer;
+    public bool isPaused;
 }

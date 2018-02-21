@@ -1,17 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum TrafficType { Two, Three, Four, ThreeReverse }
+[System.Serializable]
+public class TrafficDic{
+	public TrafficType type;
+	public Sprite[] sprites;
+}
 public class ChangeLightsColor : MonoBehaviour {
 	
 	//public int[] lightIndex = new int[3]{0,1,2};
 
 	//index = 0 : green
-	public int trafficType = 0;
+	int trafficType;
 	public int lightIndex;
-	public int maxIndex = 3;
-	public Sprite[] lights;
+	public int maxIndex; //기본신호등 maxIndex=3
+	public bool isReversed; //기본신호등 false
+	public TrafficDic[] trafficDic;
+	Sprite[] lights;
+	TrafficType type;
 	PlayerValue PV;
 
 	void Awake(){
@@ -20,9 +30,17 @@ public class ChangeLightsColor : MonoBehaviour {
 	void OnEnable () {
 		SetRandomLight();
 		if (Time.time < PV.startDestroyingTime + 2){
-			Destroy (gameObject);
+			TrafficLightsScripts.PushUsedTraffic(gameObject);
 			Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
 		}
+	}
+	public void SetTypeOfTraffic(int n){
+		type = (TrafficType)n;
+		lights = trafficDic.First(dic => dic.type == type).sprites;
+		maxIndex = lights.Length;
+		isReversed = (type == TrafficType.ThreeReverse);
+		SetRandomLight();
+		ChangeLight();
 	}
 	public void SetRandomLight()
 	{
@@ -38,19 +56,39 @@ public class ChangeLightsColor : MonoBehaviour {
 	}
 		
 	void ChangeSprite(){
+		if(lightIndex >= lights.Length)
+			lightIndex = 0;
 		GetComponent<SpriteRenderer>().sprite = lights[lightIndex];
 	}
 	public void ChangeLight()
 	{
-		lightIndex++;
-		if(lightIndex >= maxIndex){
-			lightIndex = 0 ;
+		if(isReversed == false){
+			lightIndex++;
+			if(lightIndex >= maxIndex){
+				lightIndex = 0 ;
+			}
+		}
+		else if(isReversed == true){
+			lightIndex--;
+			if(lightIndex < 0){
+				lightIndex = maxIndex-1 ;
+			}
+
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
-			if (lightIndex == 2) {
+			if (lightIndex == 0) {
+				PV.itemProbability += 10;
+				Debug.Log ("Item Probability: " + PV.itemProbability + "%");
+
+				if (PV.isBurning == false) {
+					PV.burningPoint += 6;
+				}
+				SoundManager.Play(SoundType.PassGreen);
+			}
+			else if (lightIndex == maxIndex - 1) {
 				if (PV.policePoint < 1) {
 					SoundManager.Play(MusicType.GameOver);
 					SceneManager.LoadScene ("MainMenu");
@@ -61,8 +99,7 @@ public class ChangeLightsColor : MonoBehaviour {
 					
 				}
 			}
-
-			if (lightIndex == 1) {
+			else {
 				if (PV.itemProbability < 20) {
 					PV.itemProbability = 0;
 					Debug.Log ("Item Probability: " + PV.itemProbability + "%");
@@ -83,15 +120,8 @@ public class ChangeLightsColor : MonoBehaviour {
 					SoundManager.Play(SoundType.PassYellowWithSunglass);
 					Debug.Log ("버닝게이지 감소 1회 방지");
 				}
-			} else if (lightIndex == 0) {
-				PV.itemProbability += 10;
-				Debug.Log ("Item Probability: " + PV.itemProbability + "%");
-
-				if (PV.isBurning == false) {
-					PV.burningPoint += 6;
-				}
-				SoundManager.Play(SoundType.PassGreen);
-			}
+			} 
+			
 		}
 	}
 }

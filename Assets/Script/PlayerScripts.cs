@@ -44,7 +44,7 @@ public class PlayerScripts : MonoBehaviour {
 		}
 	}
 	void GetInput(){
-		if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space)) {
+		if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
 			trafficManager.ChangeColor();
 		}
 	}

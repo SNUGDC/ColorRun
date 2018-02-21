@@ -33,9 +33,24 @@ public class TrafficLightsScripts : MonoBehaviour {
 	void Start () {
 			int randTrafficIndex=0;
 		for (int i = 0; i < 15; i++)
-		{	//randTrafficIndex = Random.Range(0,4); // 0: 3색, 1: 4색, 2: 2색, 3: 거꾸로
+		{	randTrafficIndex = Random.Range(0,4); // 0: 3색, 1: 4색, 2: 2색, 3: 거꾸로
 			if(randTrafficIndex == 0){
 				var go = Instantiate(trafficLight_0, transform);
+				storedTraffics.Enqueue(go);
+				go.SetActive(false);
+			}
+			else if(randTrafficIndex == 1){
+				var go = Instantiate(trafficLight_1, transform);
+				storedTraffics.Enqueue(go);
+				go.SetActive(false);
+			}
+			else if(randTrafficIndex == 2){
+				var go = Instantiate(trafficLight_2, transform);
+				storedTraffics.Enqueue(go);
+				go.SetActive(false);
+			}
+			else if(randTrafficIndex == 3){
+				var go = Instantiate(trafficLight_3, transform);
 				storedTraffics.Enqueue(go);
 				go.SetActive(false);
 			}
@@ -100,20 +115,10 @@ public class TrafficLightsScripts : MonoBehaviour {
 			ScrollTraffic(currentChild);
 			if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)){
 				currentChild.GetComponent<ChangeLightsColor>().ChangeLight();
-				/*
-				currentChild.GetComponent<ChangeLights4Color>().ChangeLightOf4Colors();
-				currentChild.GetComponent<ChangeLights2Color>().ChangeLightOf2Colors();
-				currentChild.GetComponent<ChangeLightsReverse>().ChangeLightReverse();
-				*/
 			}
 			if(currentChild.transform.position.x<=-15.0f){
 				storedTraffics.Enqueue(currentChild);
 				currentChild.GetComponent<ChangeLightsColor>().SetRandomLight();
-				/*
-				currentChild.GetComponent<ChangeLights4Color>().SetRandomLightOf4Colors();
-				currentChild.GetComponent<ChangeLights2Color>().SetRandomLightOf2Colors();
-				currentChild.GetComponent<ChangeLightsReverse>().SetRandomLightReverse();
-				*/
 				currentChild.transform.SetParent(transform);
 				currentChild.SetActive(false);
 			}

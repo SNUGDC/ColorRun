@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - trafficlight
+  - pauseWindow
   layers:
   - Default
   - TransparentFX

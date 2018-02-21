@@ -14,6 +14,9 @@ public class GoToOtherScene : MonoBehaviour {
 	public void GoToSetUp() {
 		SceneManager.LoadScene ("SetUp");
 	}
+	public void GoToPause() {
+		SceneManager.LoadScene("Pause");
+	}
 	public void GoToGameOverScene() {
 		SceneManager.LoadScene ("GameOver");
 	}

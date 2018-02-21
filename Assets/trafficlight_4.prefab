@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4183176719618470}
   - component: {fileID: 212706459543023594}
-  - component: {fileID: 114052700846074518}
   - component: {fileID: 61279822845001088}
+  - component: {fileID: 114929198307351638}
   m_Layer: 0
   m_Name: trafficlight_4
   m_TagString: trafficlight
@@ -67,7 +67,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 4.5}
   m_EdgeRadius: 0
---- !u!114 &114052700846074518
+--- !u!114 &114929198307351638
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -75,13 +75,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1816580292114132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df5c3fe955c911e4f98312d18078e042, type: 3}
+  m_Script: {fileID: 11500000, guid: 05fd497756996c04f8dbce7b42d6c6e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   trafficType: 1
-  lightIndexOf4Colors: 0
-  maxIndexOf4Colors: 4
-  lightsOf4Colors:
+  lightIndex: 0
+  maxIndex: 4
+  isReversed: 0
+  lights:
   - {fileID: 21300000, guid: 46da78cd2fefb4841808405518ed67b0, type: 3}
   - {fileID: 21300000, guid: 35356a6f5f85b6941ada655ecdb7001e, type: 3}
   - {fileID: 21300000, guid: fb96a6e913d6d514494fd520d178024b, type: 3}

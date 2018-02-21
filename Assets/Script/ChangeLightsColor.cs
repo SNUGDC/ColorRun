@@ -8,9 +8,10 @@ public class ChangeLightsColor : MonoBehaviour {
 	//public int[] lightIndex = new int[3]{0,1,2};
 
 	//index = 0 : green
-	public int trafficType = 0;
+	public int trafficType;
 	public int lightIndex;
-	public int maxIndex = 3;
+	public int maxIndex; //기본신호등 maxIndex=3
+	public bool isReversed; //기본신호등 false
 	public Sprite[] lights;
 	PlayerValue PV;
 
@@ -42,15 +43,24 @@ public class ChangeLightsColor : MonoBehaviour {
 	}
 	public void ChangeLight()
 	{
-		lightIndex++;
-		if(lightIndex >= maxIndex){
-			lightIndex = 0 ;
+		if(isReversed == false){
+			lightIndex++;
+			if(lightIndex >= maxIndex){
+				lightIndex = 0 ;
+			}
+		}
+		else if(isReversed == true){
+			lightIndex--;
+			if(lightIndex < 0){
+				lightIndex = maxIndex-1 ;
+			}
+
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
-			if (lightIndex == 2) {
+			if ((maxIndex==3 && lightIndex == 2)||(maxIndex==4&&lightIndex==3)||(maxIndex==2&&lightIndex==1)) {
 				if (PV.policePoint < 1) {
 					SoundManager.Play(MusicType.GameOver);
 					SceneManager.LoadScene ("MainMenu");
@@ -62,7 +72,7 @@ public class ChangeLightsColor : MonoBehaviour {
 				}
 			}
 
-			if (lightIndex == 1) {
+			else if ((maxIndex==3 && lightIndex == 1)||(maxIndex==4&&lightIndex==2))  {
 				if (PV.itemProbability < 20) {
 					PV.itemProbability = 0;
 					Debug.Log ("Item Probability: " + PV.itemProbability + "%");
@@ -83,7 +93,8 @@ public class ChangeLightsColor : MonoBehaviour {
 					SoundManager.Play(SoundType.PassYellowWithSunglass);
 					Debug.Log ("버닝게이지 감소 1회 방지");
 				}
-			} else if (lightIndex == 0) {
+			} 
+			else if (lightIndex == 0) {
 				PV.itemProbability += 10;
 				Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 

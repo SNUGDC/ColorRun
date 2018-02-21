@@ -4,23 +4,48 @@ using UnityEngine;
 
 public class PlayerScripts : MonoBehaviour {
 
-	public GameObject itemsSpawn;
-	public int policePoint;
-	public int sunglassPoint;
+	TrafficLightsScripts trafficManager;
+	ItemSpawn itemsSpawn;
+	PlayerValue PV;
+	float logBase = 1.6f;
+	float scoreTime;
 
 	void Start (){
-		itemsSpawn = GameObject.Find ("ItemsSpawn");
-		policePoint = 0;
-		sunglassPoint = 0;
+		PV = FindObjectOfType<PlayerValue>();
+		trafficManager = FindObjectOfType<TrafficLightsScripts>();
+		itemsSpawn = FindObjectOfType<ItemSpawn>();
+		PV.policePoint = 0;
+		PV.sunglassPoint = 0;
+		scoreTime = Time.time;
 	}
 
-	void Update(){
-		
-	}
-	void OnTriggerEnter2D(Collider2D other){
+	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "trafficlight") {
-			itemsSpawn.GetComponent<ItemSpawn>().GenerateRandomItem ();
+			itemsSpawn.GenerateRandomItem ();
 		}
 	}
 
+	float GetTime()
+	{
+		return Time.time - PV.initTime;
+	}
+	void Update() {
+		GetInput();
+
+		if (GetTime() <= 1.0f)
+		{
+			
+		}
+		else
+		{
+			PV.scrollSpeed += Mathf.Log(2.718281f, logBase) * Time.deltaTime / GetTime() + PV.alphaSpeed*Time.deltaTime;
+			PV.scoreSpeed += Mathf.Log(2.718281f, logBase) * Time.deltaTime / (Time.time - scoreTime) + PV.alphaSpeed*Time.deltaTime;
+			PV.frequency = PV.scrollSpeed/20 * (GetTime()/60 + 1);
+		}
+	}
+	void GetInput(){
+		if (Input.GetMouseButtonDown(0) || Input.GetKey(KeyCode.Space)) {
+			trafficManager.ChangeColor();
+		}
+	}
 }

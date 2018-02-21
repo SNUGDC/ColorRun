@@ -4,23 +4,48 @@ using UnityEngine;
 
 public class ItemSpawn : MonoBehaviour {
 
+	static Queue<GameObject> itemPool;
+	static GameObject instance;
+	static GameObject standardItem;
 	public int itemGeneratingIndex;
 	public GameObject item;
-	public Transform itemSpawnPoint;
-	public GameObject trafficLights;
+	public Transform spawnPoint;
 
 	PlayerValue PV;
 
+	public static GameObject PullNewItem() {
+		if (itemPool.Count > 0) {
+			GameObject go = itemPool.Dequeue();
+			go.transform.position = instance.GetComponent<ItemSpawn>().spawnPoint.position;
+			go.SetActive(true);
+			//Debug.Log("Pulled item from pool");
+			return go;
+		} else {
+			GameObject go = Instantiate(standardItem, instance.transform);
+			go.transform.position = instance.GetComponent<ItemSpawn>().spawnPoint.position;
+			//Debug.Log("Created new item");
+			return go;
+		}
+	}
+	public static void PushUsedItem(GameObject go) {
+		if(go.activeInHierarchy) {
+			itemPool.Enqueue(go);
+			go.SetActive(false);
+			//Debug.Log("Pushed used item");
+		}
+	}
+
 	void Awake(){
+		itemPool = new Queue<GameObject>();
+		instance = gameObject;
+		standardItem = item;
 		PV = FindObjectOfType<PlayerValue>();
 	}
-	// Use this for initialization
+
 	void Start () {
 		PV.itemProbability = 0;
-		trafficLights = GameObject.Find ("TrafficLightsSpawn");
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		GameObject currentChild;
 		for(int i=0; i<transform.childCount; i++)
@@ -29,7 +54,7 @@ public class ItemSpawn : MonoBehaviour {
 			ScrollItem(currentChild);
 			if(currentChild.transform.position.x<=-15.0f)
 			{
-				Destroy(currentChild);
+				PushUsedItem(currentChild);
 			}
 		}
 
@@ -53,8 +78,7 @@ public class ItemSpawn : MonoBehaviour {
 		itemGeneratingIndex = Random.Range (0, 100);
 		if (itemGeneratingIndex < PV.itemProbability) {
 			PV.itemProbability = 0;
-			GameObject newItem = (GameObject)Instantiate (item, itemSpawnPoint.position, Quaternion.identity) as GameObject;
-			newItem.transform.parent = transform;
+			PullNewItem();
 		}
 	}
 }

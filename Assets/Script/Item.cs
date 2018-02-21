@@ -26,9 +26,9 @@ public class Item : MonoBehaviour {
 	
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
-	}
-	void Start () {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
+	}
+	void OnEnable () {
 		itemIndex = Random.Range (0, 100);
 		selectItem ();
 	}
@@ -77,7 +77,7 @@ public class Item : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
-			Destroy (gameObject);
+			ItemSpawn.PushUsedItem(gameObject);
 			if (itemtype == ItemType.police) {
 				PV.policePoint += 1;
 				SoundManager.Play(SoundType.ItemEquip);
@@ -108,7 +108,7 @@ public class Item : MonoBehaviour {
 	void SlowSpeedTemp(float speed, float duration){
 		float delta = (1 - speed) * PV.scrollSpeed;
 		PV.scrollSpeed -= delta;
-		ItemSpawn.StartTemp (Time.time, duration, delta);
+		ItemSpawn.StartTemp(Time.time, duration, delta);
 	}
 	void ChangeInitTime(float f){
 		float time = Time.time - PV.initTime;

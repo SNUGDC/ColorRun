@@ -224,8 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemGeneratingIndex: 0
   item: {fileID: 1015179658005446, guid: 89c20b1fa43de4a3d9c9ccdc6550be5a, type: 2}
-  itemSpawnPoint: {fileID: 2074628884}
-  trafficLights: {fileID: 0}
+  spawnPoint: {fileID: 2074628884}
 --- !u!4 &208733420
 Transform:
   m_ObjectHideFlags: 0
@@ -630,9 +629,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd48759b3fc8de45b39af686ae6de88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemsSpawn: {fileID: 0}
-  policePoint: 0
-  sunglassPoint: 0
 --- !u!61 &1240186991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1142,7 +1138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2074628884}
   m_Layer: 0
-  m_Name: TrafficLightsSpawnPoint
+  m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

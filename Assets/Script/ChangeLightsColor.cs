@@ -17,7 +17,7 @@ public class ChangeLightsColor : MonoBehaviour {
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
 	}
-	void Start () {
+	void OnEnable () {
 		SetRandomLight();
 		if (Time.time < PV.startDestroyingTime + 2){
 			Destroy (gameObject);

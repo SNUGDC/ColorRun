@@ -79,10 +79,10 @@ public class Item : MonoBehaviour {
 		if (other.tag == "Player") {
 			ItemSpawn.PushUsedItem(gameObject);
 			if (itemtype == ItemType.police) {
-				PV.policePoint += 1;
+				PV.policePoint = 1;
 				SoundManager.Play(SoundType.ItemEquip);
 			} else if (itemtype == ItemType.sunglass) {
-				PV.sunglassPoint += 1;
+				PV.sunglassPoint = 1;
 				SoundManager.Play(SoundType.ItemEquip);
 			} else if (itemtype == ItemType.ion) {
 				PV.burningPoint += 12;

@@ -9,6 +9,8 @@ public class PlayerScripts : MonoBehaviour {
 	PlayerValue PV;
 	float logBase = 1.6f;
 	float scoreTime;
+	public GameObject sunglasses;
+	public GameObject police;
 
 	void Start (){
 		PV = FindObjectOfType<PlayerValue>();
@@ -30,17 +32,25 @@ public class PlayerScripts : MonoBehaviour {
 		return Time.time - PV.initTime;
 	}
 	void Update() {
-		GetInput();
+		GetInput ();
 
-		if (GetTime() <= 1.0f)
-		{
+		if (GetTime () <= 1.0f) {
 			
+		} else {
+			PV.scrollSpeed += Mathf.Log (2.718281f, logBase) * Time.deltaTime / GetTime () + PV.alphaSpeed * Time.deltaTime;
+			PV.scoreSpeed += Mathf.Log (2.718281f, logBase) * Time.deltaTime / (Time.time - scoreTime) + PV.alphaSpeed * Time.deltaTime;
+			PV.frequency = PV.scrollSpeed / 20 * (GetTime () / 60 + 1);
 		}
-		else
-		{
-			PV.scrollSpeed += Mathf.Log(2.718281f, logBase) * Time.deltaTime / GetTime() + PV.alphaSpeed*Time.deltaTime;
-			PV.scoreSpeed += Mathf.Log(2.718281f, logBase) * Time.deltaTime / (Time.time - scoreTime) + PV.alphaSpeed*Time.deltaTime;
-			PV.frequency = PV.scrollSpeed/20 * (GetTime()/60 + 1);
+
+		if (PV.policePoint == 1) {
+			police.SetActive (true);
+		} else {
+			police.SetActive (false);
+		}
+		if (PV.sunglassPoint == 1) {
+			sunglasses.SetActive (true);
+		} else {
+			sunglasses.SetActive (false);
 		}
 	}
 	void GetInput(){

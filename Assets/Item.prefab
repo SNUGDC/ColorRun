@@ -79,13 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIndex: 0
-  police: {fileID: 21300000, guid: b4aaf052a66c0483ca82d5192da04f50, type: 3}
-  sunglass: {fileID: 21300000, guid: 05cf8b1c328b54572aba09b967e5dcda, type: 3}
-  ion: {fileID: 21300000, guid: b053dd4bb6c904392b20770842d967f8, type: 3}
-  energy: {fileID: 21300000, guid: f03ec14aeb78b473cac4ca7778ae5851, type: 3}
-  water: {fileID: 21300000, guid: 5d6e80310f8f5471e8c7e1cb59eca51e, type: 3}
-  coffee: {fileID: 21300000, guid: 65715685e404b4c428b72197cb8e3347, type: 3}
-  player: {fileID: 0}
+  police: {fileID: 21300000, guid: 16441eee08469465f8dd24b5dbe4adc1, type: 3}
+  sunglass: {fileID: 21300000, guid: 9faf6ec584270cb4096facd47e549177, type: 3}
+  ion: {fileID: 21300000, guid: b23d19fc5946f7b4eb971b8b129f5458, type: 3}
+  energy: {fileID: 21300000, guid: f09090fff5bea73499e02b19293a255f, type: 3}
+  water: {fileID: 21300000, guid: 8af28741701363e4c8aad436708ba0c9, type: 3}
+  coffee: {fileID: 21300000, guid: d3b43e04b4b477645b54d88a4212caf7, type: 3}
 --- !u!212 &212516649097794100
 SpriteRenderer:
   m_ObjectHideFlags: 1

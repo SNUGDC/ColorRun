@@ -8,6 +8,10 @@ public class Score : MonoBehaviour {
 	public GameObject scoreUIObject;
 	public float score;
 	PlayerValue PV;
+	public GameObject playerWalk;
+	public GameObject playerScooter;
+	public GameObject playerCar;
+
 
 	void Awake()
 	{
@@ -22,5 +26,21 @@ public class Score : MonoBehaviour {
 	void Update () {
 		score = score + PV.scoreSpeed*Time.deltaTime;
 		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + (int)(score) + "m";
+
+		if (score <= 1000) {
+			playerWalk.SetActive (true);
+			playerScooter.SetActive (false);
+			playerCar.SetActive (false);
+
+		} 
+		else if ((1000 < score) && (score <= 3000)) {
+			playerWalk.SetActive (false);
+			playerScooter.SetActive (true);
+			playerCar.SetActive (false);
+		} else {
+			playerWalk.SetActive (false);
+			playerScooter.SetActive (false);
+			playerCar.SetActive (true);
+		}
 	}
 }

@@ -9,6 +9,8 @@ public class BurningGauge : MonoBehaviour {
 	float startTime;
 	public float startDestroyingTime;
 	PlayerValue PV;
+	public GameObject BurningGaugeBurn;
+	public Image imageOfBurningGaugeEmpty;
 
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
@@ -16,6 +18,9 @@ public class BurningGauge : MonoBehaviour {
 	void Start () {
 		PV.isReadyForBurning = false;
 		PV.isBurning = false;
+		BurningGaugeBurn.SetActive (false);
+		imageOfBurningGaugeCore.enabled = true;
+		imageOfBurningGaugeEmpty.enabled = true;
 		startDestroyingTime = Time.time - 2f;
 	}
 	
@@ -42,6 +47,9 @@ public class BurningGauge : MonoBehaviour {
 			} else {
 				PV.isReadyForBurning = false;
 				PV.isBurning = false;
+				BurningGaugeBurn.SetActive (false);
+				imageOfBurningGaugeCore.enabled = true;
+				imageOfBurningGaugeEmpty.enabled = true;
 				PV.alphaSpeed = 0f;
 				PV.scrollSpeed = PV.savedScrollSpeed;
 				Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
@@ -54,6 +62,9 @@ public class BurningGauge : MonoBehaviour {
 
 	void Burn () {
 		PV.burningPoint -= 36*Time.deltaTime;
+		BurningGaugeBurn.SetActive (true);
+		imageOfBurningGaugeCore.enabled = false;
+		imageOfBurningGaugeEmpty.enabled = false;
 		if (Input.GetKeyDown (KeyCode.Space) || (Input.GetMouseButtonDown (0))) {
 			PV.alphaSpeed += 1f;
 			Debug.Log ("Speed UP: " + PV.scrollSpeed);

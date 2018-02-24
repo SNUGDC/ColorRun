@@ -615,6 +615,11 @@ MonoBehaviour:
   sunglassPoint: 0
   colorOfPlayer: 0
   isPaused: 0
+  score: 0
+  bestScore: 0
+  nextBestScore: 0
+  sumScore: 0
+  nextSumScore: 0
 --- !u!1 &591533878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,3 +1605,45 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1828764783}
+--- !u!1 &1880453231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1880453233}
+  - component: {fileID: 1880453232}
+  m_Layer: 0
+  m_Name: UserDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1880453232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880453231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a81cd2ce0da4cc59c83bb7baf9714a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  n1: 0
+  n2: 0
+--- !u!4 &1880453233
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1880453231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 408.40115, y: 269.92307, z: -8.666539}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

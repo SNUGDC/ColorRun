@@ -21,4 +21,11 @@ public class PlayerValue : MonoBehaviour
     public int sunglassPoint;
     public int colorOfPlayer;
     public bool isPaused;
+
+	public float score;
+
+	public int bestScore;
+	public int nextBestScore;
+	public int sumScore;
+	public int nextSumScore;
 }

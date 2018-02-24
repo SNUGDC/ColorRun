@@ -18,9 +18,10 @@ public class Score : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		LoadBestScore();
+		LoadScore();
 		scoreUIObject.GetComponent<Text> ().text = "이동거리: 0m";
-		PV.nextBestScore = PlayerPrefs.GetInt ("NextBestScore", 0);
+
+		Debug.Log ("총 달린 거리: " + PV.sumScore + " / " + PV.nextSumScore);
 		Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
 	}
 	
@@ -46,7 +47,10 @@ public class Score : MonoBehaviour {
 		}
 	}
 
-	void LoadBestScore() {
+	void LoadScore() {
+		PV.sumScore = PlayerPrefs.GetInt ("SumScore", 0);
+		PV.nextSumScore = PlayerPrefs.GetInt ("NextSumScore", 0);
 		PV.bestScore = PlayerPrefs.GetInt ("BestScore", 0);
+		PV.nextBestScore = PlayerPrefs.GetInt ("NextBestScore", 0);
 	}
 }

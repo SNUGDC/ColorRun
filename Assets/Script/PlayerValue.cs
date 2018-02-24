@@ -23,6 +23,9 @@ public class PlayerValue : MonoBehaviour
     public bool isPaused;
 
 	public float score;
+
 	public int bestScore;
 	public int nextBestScore;
+	public int sumScore;
+	public int nextSumScore;
 }

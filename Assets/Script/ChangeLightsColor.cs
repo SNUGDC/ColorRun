@@ -92,6 +92,7 @@ public class ChangeLightsColor : MonoBehaviour {
 				if (PV.policePoint < 1) {
 					SoundManager.Play(MusicType.GameOver);
 					SceneManager.LoadScene ("MainMenu");
+					SaveBestScore ();
 				} else {
 					PV.policePoint -= 1;
 					SoundManager.Play(SoundType.PassRedWithPolice);
@@ -123,5 +124,14 @@ public class ChangeLightsColor : MonoBehaviour {
 			} 
 			
 		}
+	}
+
+	void SaveBestScore() {
+		if (PV.score > PV.bestScore) {
+			PV.bestScore = (int)PV.score;
+			PlayerPrefs.SetInt ("BestScore", PV.bestScore);
+		}
+		PV.nextBestScore = PlayerPrefs.GetInt ("NextBestScore", 0);
+		Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
 	}
 }

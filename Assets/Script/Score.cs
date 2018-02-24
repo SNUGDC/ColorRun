@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 
 	public GameObject scoreUIObject;
-	public float score;
 	PlayerValue PV;
 	public GameObject playerWalk;
 	public GameObject playerScooter;
@@ -19,21 +18,24 @@ public class Score : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		LoadBestScore();
 		scoreUIObject.GetComponent<Text> ().text = "이동거리: 0m";
+		PV.nextBestScore = PlayerPrefs.GetInt ("NextBestScore", 0);
+		Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		score = score + PV.scoreSpeed*Time.deltaTime;
-		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + (int)(score) + "m";
+		PV.score = PV.score + PV.scoreSpeed*Time.deltaTime;
+		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + (int)(PV.score) + "m";
 
-		if (score <= 1000) {
+		if (PV.score <= 1000) {
 			playerWalk.SetActive (true);
 			playerScooter.SetActive (false);
 			playerCar.SetActive (false);
 
 		} 
-		else if ((1000 < score) && (score <= 3000)) {
+		else if ((1000 < PV.score) && (PV.score <= 3000)) {
 			playerWalk.SetActive (false);
 			playerScooter.SetActive (true);
 			playerCar.SetActive (false);
@@ -42,5 +44,9 @@ public class Score : MonoBehaviour {
 			playerScooter.SetActive (false);
 			playerCar.SetActive (true);
 		}
+	}
+
+	void LoadBestScore() {
+		PV.bestScore = PlayerPrefs.GetInt ("BestScore", 0);
 	}
 }

@@ -33,6 +33,8 @@ public class PlayerScripts : MonoBehaviour {
 		return Time.time - PV.initTime;
 	}
 	void Update() {
+		if(PV.isPaused) return;
+
 		GetInput ();
 
 		if (GetTime () <= 1.0f) {
@@ -57,7 +59,6 @@ public class PlayerScripts : MonoBehaviour {
 	void GetInput(){
 		if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
 
-			trafficManager.ChangeColor();
 			if(PV.isBurning){
 				PV.alphaSpeed += 1f;
 				SoundManager.Play(SoundType.BurningChangeLight);

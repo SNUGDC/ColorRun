@@ -61,6 +61,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
+		if(PV.isPaused) return;
 		
 		GameObject currentChild;
 		for(int i=0; i < spawnPoint.childCount; i++)

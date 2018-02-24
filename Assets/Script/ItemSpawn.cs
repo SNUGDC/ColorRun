@@ -47,6 +47,8 @@ public class ItemSpawn : MonoBehaviour {
 	}
 	
 	void Update () {
+		if(PV.isPaused) return;
+		
 		GameObject currentChild;
 		for(int i=0; i<transform.childCount; i++)
 		{

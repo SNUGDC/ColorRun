@@ -55,7 +55,14 @@ public class PlayerScripts : MonoBehaviour {
 	}
 	void GetInput(){
 		if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
-			trafficManager.ChangeColor();
+			if(PV.isBurning){
+				PV.alphaSpeed += 1f;
+				SoundManager.Play(SoundType.BurningChangeLight);
+				Debug.Log ("Speed UP: " + PV.scrollSpeed);
+			} else {
+				trafficManager.ChangeColor();
+				SoundManager.Play(SoundType.ChangeLight);
+			}
 		}
 	}
 }

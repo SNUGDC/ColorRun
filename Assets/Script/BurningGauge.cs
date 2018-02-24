@@ -65,9 +65,5 @@ public class BurningGauge : MonoBehaviour {
 		BurningGaugeBurn.SetActive (true);
 		imageOfBurningGaugeCore.enabled = false;
 		imageOfBurningGaugeEmpty.enabled = false;
-		if (Input.GetKeyDown (KeyCode.Space) || (Input.GetMouseButtonDown (0))) {
-			PV.alphaSpeed += 1f;
-			Debug.Log ("Speed UP: " + PV.scrollSpeed);
-		}
 	}
 }

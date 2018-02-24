@@ -259,6 +259,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cf9c79b993a215b44baddbdf1b51a425, type: 3}
   - {fileID: 21300000, guid: 87c877bb03551ba45b1a4d80abbbd220, type: 3}
   - {fileID: 21300000, guid: f6c0222728a4a414999b621d37dd7502, type: 3}
+  player: {fileID: 60974105}
+  nameGreen: {fileID: 1243039974}
+  nameYellow: {fileID: 614110230}
+  nameRed: {fileID: 1662836817}
 --- !u!1 &265620371
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +603,7 @@ MonoBehaviour:
   policePoint: 0
   sunglassPoint: 0
   colorOfPlayer: 0
+  isPaused: 0
 --- !u!1 &591533878
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +736,7 @@ GameObject:
   - component: {fileID: 614110233}
   - component: {fileID: 614110232}
   m_Layer: 5
-  m_Name: "\uB178\uC544"
+  m_Name: "\uB178\uC57C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,7 +792,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB178\uC544"
+  m_Text: "\uB178\uC57C"
 --- !u!222 &614110233
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1054,6 +1059,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cf9c79b993a215b44baddbdf1b51a425, type: 3}
   - {fileID: 21300000, guid: 87c877bb03551ba45b1a4d80abbbd220, type: 3}
   - {fileID: 21300000, guid: f6c0222728a4a414999b621d37dd7502, type: 3}
+  player: {fileID: 0}
+  nameGreen: {fileID: 0}
+  nameYellow: {fileID: 0}
+  nameRed: {fileID: 0}
 --- !u!1 &1178914343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,7 +1142,7 @@ GameObject:
   - component: {fileID: 1243039977}
   - component: {fileID: 1243039976}
   m_Layer: 5
-  m_Name: "\uCD08\uC774"
+  m_Name: "\uCD08\uC57C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1189,7 +1198,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uCD08\uC774"
+  m_Text: "\uCD08\uC57C"
 --- !u!222 &1243039977
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1396,7 +1405,7 @@ GameObject:
   - component: {fileID: 1662836820}
   - component: {fileID: 1662836819}
   m_Layer: 5
-  m_Name: "\uBF40\uC774"
+  m_Name: "\uBF40\uC57C"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1452,7 +1461,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uBF40\uC774"
+  m_Text: "\uBF40\uC57C"
 --- !u!222 &1662836820
 CanvasRenderer:
   m_ObjectHideFlags: 0

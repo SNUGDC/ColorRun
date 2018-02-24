@@ -259,7 +259,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cf9c79b993a215b44baddbdf1b51a425, type: 3}
   - {fileID: 21300000, guid: 87c877bb03551ba45b1a4d80abbbd220, type: 3}
   - {fileID: 21300000, guid: f6c0222728a4a414999b621d37dd7502, type: 3}
-  player: {fileID: 60974105}
   nameGreen: {fileID: 1243039974}
   nameYellow: {fileID: 614110230}
   nameRed: {fileID: 1662836817}
@@ -926,9 +925,7 @@ GameObject:
   - component: {fileID: 1011120281}
   - component: {fileID: 1011120280}
   - component: {fileID: 1011120279}
-  - component: {fileID: 1011120283}
   - component: {fileID: 1011120284}
-  - component: {fileID: 1011120285}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1022,17 +1019,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1011120283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011120278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5492ba4ee02bcc24dae8cb00ebd45d49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1011120284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,25 +1030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c991b21ee78de145858aacc8f18ab0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1011120285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011120278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5e7882eadbcec1429b820f47826f104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  players:
-  - {fileID: 21300000, guid: cf9c79b993a215b44baddbdf1b51a425, type: 3}
-  - {fileID: 21300000, guid: 87c877bb03551ba45b1a4d80abbbd220, type: 3}
-  - {fileID: 21300000, guid: f6c0222728a4a414999b621d37dd7502, type: 3}
-  player: {fileID: 0}
-  nameGreen: {fileID: 0}
-  nameYellow: {fileID: 0}
-  nameRed: {fileID: 0}
 --- !u!1 &1178914343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1040,7 @@ GameObject:
   - component: {fileID: 1178914344}
   - component: {fileID: 1178914346}
   - component: {fileID: 1178914345}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1348,7 +1315,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011120285}
+      - m_Target: {fileID: 60974109}
         m_MethodName: RightChangePlayer
         m_Mode: 1
         m_Arguments:
@@ -1492,13 +1459,13 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1828764783}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1011120282}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.06, y: 0.06}
   m_AnchorMax: {x: 0.11, y: 0.21}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1543,7 +1510,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1011120285}
+      - m_Target: {fileID: 60974109}
         m_MethodName: LeftChangePlayer
         m_Mode: 1
         m_Arguments:
@@ -1569,7 +1536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

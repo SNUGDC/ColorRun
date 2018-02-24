@@ -19,6 +19,7 @@ public class PlayerScripts : MonoBehaviour {
 		PV.policePoint = 0;
 		PV.sunglassPoint = 0;
 		scoreTime = Time.time;
+		PV.colorOfPlayer = PlayerPrefs.GetInt("colorOfPlayer");
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
@@ -56,6 +57,7 @@ public class PlayerScripts : MonoBehaviour {
 	void GetInput(){
 		if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
 			trafficManager.ChangeColor();
+			Debug.Log(PV.colorOfPlayer);
 		}
 	}
 }

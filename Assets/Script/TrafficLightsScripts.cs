@@ -115,11 +115,6 @@ public class TrafficLightsScripts : MonoBehaviour {
 		{	
 			var currentChild = spawnPoint.GetChild(i).gameObject;
 			currentChild.GetComponent<ChangeLightsColor>().ChangeLight();
-			/*
-			currentChild.GetComponent<ChangeLights4Color>().ChangeLightOf4Colors();
-			currentChild.GetComponent<ChangeLights2Color>().ChangeLightOf2Colors();
-			currentChild.GetComponent<ChangeLightsReverse>().ChangeLightReverse();
-			*/
 		}
 	}
 }

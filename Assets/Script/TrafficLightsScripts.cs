@@ -62,6 +62,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(PV.isPaused) return;
+		PV.nowKmHSpeed = PV.scrollSpeed * 2;
 		
 		GameObject currentChild;
 		for(int i=0; i < spawnPoint.childCount; i++)
@@ -72,18 +73,18 @@ public class TrafficLightsScripts : MonoBehaviour {
 				PushUsedTraffic(currentChild);
 			}
 		}	
+		
 		//GenerateTrafficlights
 		z += 0.0025f * Time.deltaTime;
 		if (z < 0.5)
 		{
-			if (counter <= Random.Range(0.0f, z))
+			if (counter <= Random.Range(0.0f, z) && PV.afterBurningDelay < 0)
 			{
 				GenerateRandomTraffic();
 				n += 1;
 				//Debug.Log(n);
 				//Debug.Log ("Speed: " + PV.scrollSpeed);
-				PV.kmHSpeed = Mathf.Pow(PV.scrollSpeed, 2) / 5;
-				Debug.Log (PV.kmHSpeed + "km/h");
+				Debug.Log ("now: " + PV.nowKmHSpeed + "km/h // " + PV.kmHSpeed + "km/h");
 			}
 			else
 			{

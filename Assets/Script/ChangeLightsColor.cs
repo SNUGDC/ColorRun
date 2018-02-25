@@ -92,6 +92,9 @@ public class ChangeLightsColor : MonoBehaviour {
 
 				PV.totalGreenLights += 1;
 				CheckCombo ();
+				if (PV.nowKmHSpeed > PV.kmHSpeed) {
+					PV.kmHSpeed = PV.nowKmHSpeed;
+				}
 			}
 			else if (lightIndex == maxIndex - 1) {
 				if (PV.nowCombo > PV.combo) {
@@ -100,6 +103,10 @@ public class ChangeLightsColor : MonoBehaviour {
 				PV.nowCombo = 0;
 				//Debug.Log ("COMBO: " + PV.nowCombo + " " + PV.isCombo);
 				PV.isCombo = false;
+
+				if (PV.nowKmHSpeed > PV.kmHSpeed) {
+					PV.kmHSpeed = PV.nowKmHSpeed;
+				}
 
 				if (PV.policePoint < 1) {
 					SoundManager.Play(MusicType.GameOver);
@@ -124,6 +131,10 @@ public class ChangeLightsColor : MonoBehaviour {
 				PV.nowCombo = 0;
 				//Debug.Log ("COMBO: " + PV.nowCombo + " " + PV.isCombo);
 				PV.isCombo = false;
+
+				if (PV.nowKmHSpeed > PV.kmHSpeed) {
+					PV.kmHSpeed = PV.nowKmHSpeed;
+				}
 
 				if (PV.itemProbability < 20) {
 					PV.itemProbability = 0;
@@ -188,8 +199,10 @@ public class ChangeLightsColor : MonoBehaviour {
 
 		if (PV.kmHSpeed > PV.bestSpeed) {
 			PV.bestSpeed = PV.kmHSpeed;
+			PV.bestSpeed = Mathf.Floor (PV.kmHSpeed * 10) * 0.1f;
 			PlayerPrefs.SetFloat ("BestSpeed", PV.bestSpeed);
 		}
+
 
 		PlayerPrefs.SetInt ("TotalTouch", PV.totalTouch);
 

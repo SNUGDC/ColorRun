@@ -181,6 +181,7 @@ public class ChangeLightsColor : MonoBehaviour {
 
 		if (PV.kmHSpeed > PV.bestSpeed) {
 			PV.bestSpeed = PV.kmHSpeed;
+			PV.bestSpeed = Mathf.Floor (PV.kmHSpeed * 10) * 0.1f;
 			PlayerPrefs.SetFloat ("BestSpeed", PV.bestSpeed);
 		}
 

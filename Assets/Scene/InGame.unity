@@ -1397,7 +1397,7 @@ Animator:
   m_GameObject: {fileID: 1034950244}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 73879b4b8533e428d800b25e815a88c5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 24cfdf716cc104a048d0d6edf5d0c582, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1439,7 +1439,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 73efee7b9f8fd4876ad95bac9f61bd14, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b2a3b7af98684f7e90d8e3a15651887, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1796,9 +1796,13 @@ MonoBehaviour:
   burningCount: 0
   sumBurningCount: 0
   nextSumBurningCount: 0
-  getItem: 0
   sumGetItem: 0
   nextSumGetItem: 0
+  kmHSpeed: 0
+  bestSpeed: 0
+  nextBestSpeed: 0
+  totalTouch: 0
+  nextTotalTouch: 0
 --- !u!1001 &1390084631
 Prefab:
   m_ObjectHideFlags: 0

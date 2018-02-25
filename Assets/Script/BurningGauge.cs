@@ -19,7 +19,6 @@ public class BurningGauge : MonoBehaviour {
 		PV.isReadyForBurning = false;
 		PV.isBurning = false;
 		BurningGaugeBurn.SetActive (false);
-		imageOfBurningGaugeCore.enabled = true;
 		imageOfBurningGaugeEmpty.enabled = true;
 		startDestroyingTime = Time.time - 2f;
 	}
@@ -49,7 +48,6 @@ public class BurningGauge : MonoBehaviour {
 				PV.isReadyForBurning = false;
 				PV.isBurning = false;
 				BurningGaugeBurn.SetActive (false);
-				imageOfBurningGaugeCore.enabled = true;
 				imageOfBurningGaugeEmpty.enabled = true;
 				PV.alphaSpeed = 0f;
 				PV.scrollSpeed = PV.savedScrollSpeed;
@@ -64,7 +62,6 @@ public class BurningGauge : MonoBehaviour {
 	void Burn () {
 		PV.burningPoint -= 36*Time.deltaTime;
 		BurningGaugeBurn.SetActive (true);
-		imageOfBurningGaugeCore.enabled = false;
 		imageOfBurningGaugeEmpty.enabled = false;
 	}
 }

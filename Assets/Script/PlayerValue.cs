@@ -23,6 +23,7 @@ public class PlayerValue : MonoBehaviour
     public int sunglassPoint;
     public int colorOfPlayer;
     public bool isPaused;
+	public bool isGameOvered = false;
 
 	public float score;
 
@@ -55,4 +56,5 @@ public class PlayerValue : MonoBehaviour
 
 	public int totalTouch;
 	public int nextTotalTouch;
+	
 }

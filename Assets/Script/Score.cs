@@ -33,7 +33,9 @@ public class Score : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		PV.score = PV.score + PV.scoreSpeed*Time.deltaTime;
+		if(!PV.isPaused && !PV.isGameOvered) {
+			PV.score = PV.score + PV.scoreSpeed*Time.deltaTime;
+		}
 		scoreUIObject.GetComponent<Text> ().text = "이동거리: " + (int)(PV.score) + "m";
 
 		if (PV.score <= 1000) {

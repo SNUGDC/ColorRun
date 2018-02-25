@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GoToOtherScene : MonoBehaviour {
 
+
 	public void GoToMainMenu() {
 		SoundManager.Play(MusicType.Main);
 		SceneManager.LoadScene("MainMenu");

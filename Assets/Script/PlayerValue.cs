@@ -11,6 +11,7 @@ public class PlayerValue : MonoBehaviour
     public bool isBurning;
     public bool isReadyForBurning;
     public float startDestroyingTime;
+	public float afterBurningDelay;
     public float savedScrollSpeed;
     public float savedScoreSpeed;
     public float alphaSpeed;

@@ -72,11 +72,12 @@ public class TrafficLightsScripts : MonoBehaviour {
 				PushUsedTraffic(currentChild);
 			}
 		}	
+		
 		//GenerateTrafficlights
 		z += 0.0025f * Time.deltaTime;
 		if (z < 0.5)
 		{
-			if (counter <= Random.Range(0.0f, z))
+			if (counter <= Random.Range(0.0f, z) && PV.afterBurningDelay < 0)
 			{
 				GenerateRandomTraffic();
 				n += 1;

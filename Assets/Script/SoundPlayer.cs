@@ -14,7 +14,7 @@ public class SoundPlayer : MonoBehaviour{
         audio = GetComponent<AudioSource>();
     }
     public void Play(AudioClip clip, bool loop = false){
-        audio.Stop();
+        audio.Pause();
         audio.clip = clip;
         audio.Play();
         if (isMusicPlayer) audio.loop = loop;
@@ -36,5 +36,18 @@ public class SoundPlayer : MonoBehaviour{
     }
     void Update(){
         audio.volume = isMusicPlayer? musicVolume : soundVolume;
+    }
+    
+    public static void SetSoundVolume(float value){
+        soundVolume = value;
+    }
+    public static float GetSoundVolume(){
+        return soundVolume;
+    }
+    public static void SetMusicVolume(float value){
+        musicVolume = value;
+    }
+    public static float GetMusicVolume(){
+        return musicVolume;
     }
 }

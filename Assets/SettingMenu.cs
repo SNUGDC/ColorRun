@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SettingMenu : MonoBehaviour {
 
-    public AudioMixer audioMixer;
-
-    public void SetVolume (float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
+	public Slider soundSlider;
+	public Slider musicSlider;
+	public void Start(){
+		soundSlider.value = SoundPlayer.GetSoundVolume();
+		musicSlider.value = SoundPlayer.GetMusicVolume();
+	}
+    public void SetSoundVolume(){
+        SoundPlayer.SetSoundVolume(soundSlider.value);
     }
-	// Use this for initialization
-	void Start () {
-		
+	public void SetMusicVolume(){
+		SoundPlayer.SetMusicVolume(musicSlider.value);	
 	}
 	
 	// Update is called once per frame

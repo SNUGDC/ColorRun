@@ -2,6 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class SlowSpeedData{
+	static HashSet<SlowSpeedData> dataSet = new HashSet<SlowSpeedData>();
+	public float speed;
+	public float duration;
+	public float leftTime;
+	public SlowSpeedData(float s, float d){
+		speed = s;
+		duration = d;
+		leftTime = d;
+		dataSet.Add(this);
+	}
+	public static void ResetDataSet(){
+		dataSet = new HashSet<SlowSpeedData>();
+	}
+	public static void ProgressLeftTime(float deltaTime){
+		var deadList = new HashSet<SlowSpeedData>();
+		foreach(var data in dataSet){
+			data.leftTime -= deltaTime;
+			if(data.leftTime <= 0){
+				deadList.Add(data);
+			}
+		}
+		foreach(var data in deadList){
+			dataSet.Remove(data);
+		}
+	}
+	public static float GetDeltaSpeed(float deltaTime){
+		float deltaSpeed = 0;
+		foreach(var data in dataSet){
+			deltaSpeed += data.speed * deltaTime / data.duration;
+		}
+		return deltaSpeed;
+	}
+}
 public class ItemSpawn : MonoBehaviour {
 
 	static Queue<GameObject> itemPool;
@@ -39,6 +73,7 @@ public class ItemSpawn : MonoBehaviour {
 		itemPool = new Queue<GameObject>();
 		instance = gameObject;
 		standardItem = item;
+		SlowSpeedData.ResetDataSet();
 		PV = FindObjectOfType<PlayerValue>();
 	}
 
@@ -60,9 +95,11 @@ public class ItemSpawn : MonoBehaviour {
 			}
 		}
 
+		SlowSpeedData.ProgressLeftTime(Time.deltaTime);
+		/*
 		if (Time.time < itemStartTime + duration) {
 			PV.scrollSpeed += speed * Time.deltaTime / duration;
-		}
+		}*/
 	}
 	static float itemStartTime, duration, speed;
 	public static void StartTemp(float t, float d, float s){

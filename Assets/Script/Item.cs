@@ -98,7 +98,7 @@ public class Item : MonoBehaviour {
 				SoundManager.Play(SoundType.ItemSpeed);
 				SlowSpeedTemp(0.8f, 3f);
 			} else if (itemtype == ItemType.coffee) {
-				PV.scrollSpeed *= 0.6f; 
+				//PV.scrollSpeed *= 0.6f; 
 				SoundManager.Play(SoundType.ItemSpeed);
 				//ChangeInitTime(0.0f);
 				SlowSpeedTemp(0.6f, 3f);
@@ -109,7 +109,8 @@ public class Item : MonoBehaviour {
 	void SlowSpeedTemp(float speed, float duration){
 		float delta = (1 - speed) * PV.scrollSpeed;
 		PV.scrollSpeed -= delta;
-		ItemSpawn.StartTemp(Time.time, duration, delta);
+		//ItemSpawn.StartTemp(Time.time, duration, delta);
+		new SlowSpeedData(delta, duration);
 	}
 	void ChangeInitTime(float f){
 		float time = Time.time - PV.initTime;

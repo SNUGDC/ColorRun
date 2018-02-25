@@ -29,7 +29,6 @@ public class Item : MonoBehaviour {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 	}
 	void OnEnable () {
-		itemIndex = Random.Range (0, 100);
 		selectItem ();
 	}
 
@@ -37,42 +36,53 @@ public class Item : MonoBehaviour {
 	}
 
 	void selectItem() {
-		// police
-		if (0 <= itemIndex && itemIndex < 3) {
-			spriteRenderer.sprite = police;
-			itemtype = ItemType.police;
-			Debug.Log ("경찰 훈장: 3%");
+		for (int i = 0; i < 100; i++){
+			itemIndex = Random.Range (0, 100);
+			// police
+			if (0 <= itemIndex && itemIndex < 3 && PV.policePoint == 0) {
+				spriteRenderer.sprite = police;
+				itemtype = ItemType.police;
+				//Debug.Log ("경찰 훈장: 3%");
+				return;
+			}
+			// sunglass
+			else if (3 <= itemIndex && itemIndex < 18 && PV.sunglassPoint == 0) {
+				spriteRenderer.sprite = sunglass;
+				itemtype = ItemType.sunglass;
+				//Debug.Log ("선글라스: 15%");
+				return;
+			}
+			// ion
+			else if (18 <= itemIndex && itemIndex < 53) {
+				spriteRenderer.sprite = ion;
+				itemtype = ItemType.ion;
+				//Debug.Log ("이온 음료: 35%");
+				return;
+			}
+			// energy
+			else if (53 <= itemIndex && itemIndex < 65) {
+				spriteRenderer.sprite = energy;
+				itemtype = ItemType.energy;
+				//Debug.Log ("에너지 드링크: 12%");
+				return;
+			}
+			// water
+			else if (65 <= itemIndex && itemIndex < 90) {
+				spriteRenderer.sprite = water;
+				itemtype = ItemType.water;
+				//Debug.Log ("생수: 25%");
+				return;
+			}
+			// coffee
+			else if (90 <= itemIndex && itemIndex < 100) {
+				spriteRenderer.sprite = coffee;
+				itemtype = ItemType.coffee;
+				//Debug.Log ("커피: 10%");
+				return;
+			}
 		}
-		// sunglass
-		else if (3 <= itemIndex && itemIndex < 18) {
-			spriteRenderer.sprite = sunglass;
-			itemtype = ItemType.sunglass;
-			Debug.Log ("선글라스: 15%");
-		}
-		// ion
-		else if (18 <= itemIndex && itemIndex < 53) {
-			spriteRenderer.sprite = ion;
-			itemtype = ItemType.ion;
-			Debug.Log ("이온 음료: 35%");
-		}
-		// energy
-		else if (53 <= itemIndex && itemIndex < 65) {
-			spriteRenderer.sprite = energy;
-			itemtype = ItemType.energy;
-			Debug.Log ("에너지 드링크: 12%");
-		}
-		// water
-		else if (65 <= itemIndex && itemIndex < 90) {
-			spriteRenderer.sprite = water;
-			itemtype = ItemType.water;
-			Debug.Log ("생수: 25%");
-		}
-		// coffee
-		else if (90 <= itemIndex && itemIndex < 100) {
-			spriteRenderer.sprite = coffee;
-			itemtype = ItemType.coffee;
-			Debug.Log ("커피: 10%");
-		}
+		spriteRenderer.sprite = energy;
+		itemtype = ItemType.energy;
 	}
 
 	void OnTriggerEnter2D(Collider2D other){

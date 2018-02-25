@@ -18,6 +18,7 @@ public class BurningGauge : MonoBehaviour {
 	void Start () {
 		PV.isReadyForBurning = false;
 		PV.isBurning = false;
+		PV.afterBurningDelay = 0;
 		BurningGaugeBurn.SetActive (false);
 		imageOfBurningGaugeEmpty.enabled = true;
 		startDestroyingTime = Time.time - 2f;
@@ -25,15 +26,18 @@ public class BurningGauge : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(PV.isPaused) return;
 
 		imageOfBurningGaugeCore.fillAmount = PV.burningPoint / 180f;
-		
+		PV.afterBurningDelay -= Time.deltaTime;
+
 		if ((PV.burningPoint>=180) && (PV.isReadyForBurning == false)) {
 			PV.isReadyForBurning = true;
 			startTime = Time.time;
 		}
 
 		if (PV.isReadyForBurning == true) {
+			Debug.Log("BurningTime : "+(Time.time - startTime));
 			if (Time.time < startTime + 5) {
 				if ((PV.isBurning == false)) {
 					PV.savedScrollSpeed = PV.scrollSpeed;
@@ -44,7 +48,6 @@ public class BurningGauge : MonoBehaviour {
 				}
 				Burn ();
 				PV.isBurning = true;
-				Debug.Log ("Burning Seconds: " + (int)(Time.time - startTime));
 			} else {
 				PV.isReadyForBurning = false;
 				PV.isBurning = false;
@@ -53,6 +56,7 @@ public class BurningGauge : MonoBehaviour {
 				SoundManager.StopBurning();
 				PV.alphaSpeed = 0f;
 				PV.scrollSpeed = PV.savedScrollSpeed;
+				PV.afterBurningDelay = 2;
 				Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
 				startDestroyingTime = Time.time;
 				Debug.Log ("2초 동안 신호등 없음");

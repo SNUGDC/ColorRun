@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerValue : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerValue : MonoBehaviour
     public bool isBurning;
     public bool isReadyForBurning;
     public float startDestroyingTime;
+	public float afterBurningDelay;
     public float savedScrollSpeed;
     public float savedScoreSpeed;
     public float alphaSpeed;
@@ -21,6 +23,7 @@ public class PlayerValue : MonoBehaviour
     public int sunglassPoint;
     public int colorOfPlayer;
     public bool isPaused;
+	public bool isGameOvered = false;
 
 	public float score;
 
@@ -53,4 +56,5 @@ public class PlayerValue : MonoBehaviour
 
 	public int totalTouch;
 	public int nextTotalTouch;
+	
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public enum TrafficType { Two, Three, Four, ThreeReverse }
@@ -77,6 +78,7 @@ public class ChangeLightsColor : MonoBehaviour {
 		}
 	}
 
+
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
 			if (lightIndex == 0) {
@@ -108,7 +110,12 @@ public class ChangeLightsColor : MonoBehaviour {
 
 				if (PV.policePoint < 1) {
 					SoundManager.Play(MusicType.GameOver);
-					SceneManager.LoadScene ("MainMenu");
+					PV.isGameOvered = true;
+					GameObject gameOverWindow = GameObject.Find("GameOverWindow");
+					gameOverWindow.GetComponent<GameOver>().GameOvered();
+					//SceneManager.LoadScene ("MainMenu");
+					//게임오버함수 호출 작성해야함
+
 					SaveScore ();
 				} else {
 					PV.policePoint -= 1;

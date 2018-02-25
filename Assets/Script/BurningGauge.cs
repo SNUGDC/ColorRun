@@ -11,6 +11,9 @@ public class BurningGauge : MonoBehaviour {
 	PlayerValue PV;
 	public GameObject BurningGaugeBurn;
 	public Image imageOfBurningGaugeEmpty;
+	public Sprite gaugeWhite;
+	public Sprite gaugeRed;
+	int frameCounter;
 
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
@@ -43,6 +46,7 @@ public class BurningGauge : MonoBehaviour {
 					PV.savedScrollSpeed = PV.scrollSpeed;
 					PV.savedScoreSpeed = PV.scoreSpeed;
 					PV.afterBurningDelay = 0.05f;
+					frameCounter = 0;
 					//Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
 					PV.burningCount += 1;
 					SoundManager.PlayBurning();
@@ -68,7 +72,16 @@ public class BurningGauge : MonoBehaviour {
 
 	void Burn () {
 		PV.burningPoint -= 36*Time.deltaTime;
-		BurningGaugeBurn.SetActive (true);
-		imageOfBurningGaugeEmpty.enabled = false;
+		//BurningGaugeBurn.SetActive (true);
+		//imageOfBurningGaugeEmpty.enabled = false;
+
+		if (frameCounter < 5) imageOfBurningGaugeEmpty.sprite = gaugeWhite;
+		else {
+			imageOfBurningGaugeEmpty.sprite = gaugeRed;
+			if(frameCounter > 9){
+				frameCounter = 0;
+			}
+		}
+		frameCounter = 0;
 	}
 }

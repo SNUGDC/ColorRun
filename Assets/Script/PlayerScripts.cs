@@ -38,7 +38,7 @@ public class PlayerScripts : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.tag == "trafficlight") {
+		if ((other.tag == "trafficlight") && (PV.isBurning == false)) {
 			itemsSpawn.GenerateRandomItem ();
 		}
 	}

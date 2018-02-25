@@ -138,7 +138,7 @@ public class ChangeLightsColor : MonoBehaviour {
 					SoundManager.Play(SoundType.PassYellowWithSunglass);
 					Debug.Log ("버닝게이지 감소 1회 방지");
 				}
-			} 
+			}
 			
 		}
 	}

@@ -78,13 +78,13 @@ public class TrafficLightsScripts : MonoBehaviour {
 		z += 0.0025f * Time.deltaTime;
 		if (z < 0.5)
 		{
-			if (counter <= Random.Range(0.0f, z) && PV.afterBurningDelay < 0)
+			if (counter <= Random.Range(0.0f, z) && PV.afterBurningDelay < 0.1f)
 			{
 				GenerateRandomTraffic();
 				n += 1;
 				//Debug.Log(n);
 				//Debug.Log ("Speed: " + PV.scrollSpeed);
-				Debug.Log ("now: " + PV.nowKmHSpeed + "km/h // " + PV.kmHSpeed + "km/h");
+				//Debug.Log ("now: " + PV.nowKmHSpeed + "km/h // " + PV.kmHSpeed + "km/h");
 			}
 			else
 			{
@@ -138,7 +138,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 		int value = 0;
 		for (int i = 1; i < numOfType; i++){
 			if (num > 100 - 25 * i) {
-				Debug.Log("RandomGenerator : " + i);
+				//Debug.Log("RandomGenerator : " + i);
 				value = i;
 				break;
 			}

@@ -98,11 +98,11 @@ public class Item : MonoBehaviour {
 			} else if (itemtype == ItemType.ion) {
 				PV.burningPoint += 12;
 				SoundManager.Play(SoundType.ItemBurning);
-				Debug.Log ("버닝 포인트 12 증가");
+				//Debug.Log ("버닝 포인트 12 증가");
 			} else if (itemtype == ItemType.energy) {
 				PV.burningPoint += 30;
 				SoundManager.Play(SoundType.ItemBurning);
-				Debug.Log ("버닝 포인트 30 증가");
+				//Debug.Log ("버닝 포인트 30 증가");
 			} else if (itemtype == ItemType.water) {
 				//PV.scrollSpeed *= 0.8f;
 				SoundManager.Play(SoundType.ItemSpeed);

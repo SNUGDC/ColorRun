@@ -32,7 +32,7 @@ public class ChangeLightsColor : MonoBehaviour {
 		SetRandomLight();
 		if (Time.time < PV.startDestroyingTime + 2){
 			TrafficLightsScripts.PushUsedTraffic(gameObject);
-			Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
+			//Debug.Log ("Destroying Seconds: " + (int)(Time.time - PV.startDestroyingTime));
 		}
 	}
 	public void SetTypeOfTraffic(int n){
@@ -83,7 +83,7 @@ public class ChangeLightsColor : MonoBehaviour {
 		if (other.tag == "Player") {
 			if (lightIndex == 0) {
 				PV.itemProbability += 10;
-				Debug.Log ("Item Probability: " + PV.itemProbability + "%");
+				//Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 
 				if (PV.isBurning == false) {
 					PV.burningPoint += 6;
@@ -118,7 +118,7 @@ public class ChangeLightsColor : MonoBehaviour {
 				} else {
 					PV.policePoint -= 1;
 					SoundManager.Play(SoundType.PassRedWithPolice);
-					Debug.Log ("게임 오버 1회 방지");
+					//Debug.Log ("게임 오버 1회 방지");
 					
 				}
 			}
@@ -136,10 +136,10 @@ public class ChangeLightsColor : MonoBehaviour {
 
 				if (PV.itemProbability < 20) {
 					PV.itemProbability = 0;
-					Debug.Log ("Item Probability: " + PV.itemProbability + "%");
+					//Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 				} else {
 					PV.itemProbability -= 20;
-					Debug.Log ("Item Probability: " + PV.itemProbability + "%");
+					//Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 				}
 
 				if (PV.sunglassPoint < 1) {
@@ -152,7 +152,7 @@ public class ChangeLightsColor : MonoBehaviour {
 				} else {
 					PV.sunglassPoint -= 1;
 					SoundManager.Play(SoundType.PassYellowWithSunglass);
-					Debug.Log ("버닝게이지 감소 1회 방지");
+					//Debug.Log ("버닝게이지 감소 1회 방지");
 				}
 			}
 			
@@ -212,13 +212,13 @@ public class ChangeLightsColor : MonoBehaviour {
 		PV.nextSumGetItem = PlayerPrefs.GetInt ("NextSumGetItem", 0);
 		PV.nextBestSpeed = PlayerPrefs.GetFloat ("NextBestSpeed", 0);
 		PV.nextTotalTouch = PlayerPrefs.GetInt ("NextTotalTouch", 0);
-		Debug.Log ("총 달린 거리: " + PV.sumScore + " / " + PV.nextSumScore);
-		Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
-		Debug.Log ("총 초록불 통과 개수: " + PV.totalGreenLights + " / " + PV.nextTotalGreenLights);
-		Debug.Log ("초록불 최고 연속 통과 개수: " + PV.comboGreenLight + " / " + PV.nextComboGreenLight);
-		Debug.Log ("버닝상태 진입 횟수: " + PV.sumBurningCount + " / " + PV.nextSumBurningCount);
-		Debug.Log ("지금까지 획득한 아이템 개수: " + PV.sumGetItem + " / " + PV.nextSumGetItem);
-		Debug.Log ("최고 속도: " + PV.bestSpeed + " / " + PV.nextBestSpeed);
-		Debug.Log ("지금까지 터치한 횟수: " + PV.totalTouch + " / " + PV.nextTotalTouch);
+		//Debug.Log ("총 달린 거리: " + PV.sumScore + " / " + PV.nextSumScore);
+		//Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
+		//Debug.Log ("총 초록불 통과 개수: " + PV.totalGreenLights + " / " + PV.nextTotalGreenLights);
+		//Debug.Log ("초록불 최고 연속 통과 개수: " + PV.comboGreenLight + " / " + PV.nextComboGreenLight);
+		//Debug.Log ("버닝상태 진입 횟수: " + PV.sumBurningCount + " / " + PV.nextSumBurningCount);
+		//Debug.Log ("지금까지 획득한 아이템 개수: " + PV.sumGetItem + " / " + PV.nextSumGetItem);
+		//Debug.Log ("최고 속도: " + PV.bestSpeed + " / " + PV.nextBestSpeed);
+		//Debug.Log ("지금까지 터치한 횟수: " + PV.totalTouch + " / " + PV.nextTotalTouch);
 	}
 }

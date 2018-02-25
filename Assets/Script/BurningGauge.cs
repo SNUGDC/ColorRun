@@ -29,7 +29,7 @@ public class BurningGauge : MonoBehaviour {
 		if(PV.isPaused) return;
 
 		imageOfBurningGaugeCore.fillAmount = PV.burningPoint / 180f;
-		PV.afterBurningDelay -= Time.deltaTime;
+		if(!PV.isBurning) PV.afterBurningDelay -= Time.deltaTime;
 
 		if ((PV.burningPoint>=180) && (PV.isReadyForBurning == false)) {
 			PV.isReadyForBurning = true;
@@ -37,12 +37,13 @@ public class BurningGauge : MonoBehaviour {
 		}
 
 		if (PV.isReadyForBurning == true) {
-			Debug.Log("BurningTime : "+(Time.time - startTime));
+			//Debug.Log("BurningTime : "+(Time.time - startTime));
 			if (Time.time < startTime + 5) {
 				if ((PV.isBurning == false)) {
 					PV.savedScrollSpeed = PV.scrollSpeed;
 					PV.savedScoreSpeed = PV.scoreSpeed;
-					Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
+					PV.afterBurningDelay = 0.05f;
+					//Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
 					PV.burningCount += 1;
 					SoundManager.PlayBurning();
 				}
@@ -57,9 +58,9 @@ public class BurningGauge : MonoBehaviour {
 				PV.alphaSpeed = 0f;
 				PV.scrollSpeed = PV.savedScrollSpeed;
 				PV.afterBurningDelay = 2;
-				Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
+				//Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
 				startDestroyingTime = Time.time;
-				Debug.Log ("2초 동안 신호등 없음");
+				//Debug.Log ("2초 동안 신호등 없음");
 			}
 		} 
 

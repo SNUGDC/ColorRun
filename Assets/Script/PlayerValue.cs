@@ -28,4 +28,11 @@ public class PlayerValue : MonoBehaviour
 	public int nextBestScore;
 	public int sumScore;
 	public int nextSumScore;
+	public int totalGreenLights;
+	public int nextTotalGreenLights;
+	public bool isCombo;
+	public int nowCombo;
+	public int combo;
+	public int comboGreenLight;
+	public int nextComboGreenLight;
 }

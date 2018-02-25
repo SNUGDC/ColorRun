@@ -35,6 +35,10 @@ public class Challenge : MonoBehaviour {
 		nextTotalDistanceUI.GetComponent<Text> ().text = PV.nextSumScore + "m";
 		bestDistanceUI.GetComponent<Text> ().text = PV.bestScore + "m";
 		nextBestDistanceUI.GetComponent<Text> ().text = PV.nextBestScore + "m";
+		totalGreenLightsUI.GetComponent<Text> ().text = PV.totalGreenLights + "개";
+		nextTotalGreenLightsUI.GetComponent<Text> ().text = PV.nextTotalGreenLights + "개";
+		comboGreenLightUI.GetComponent<Text> ().text = PV.comboGreenLight + "개";
+		nextComboGreenLightUI.GetComponent<Text> ().text = PV.nextComboGreenLight + "개";
 	}
 		
 	void Update () {
@@ -46,5 +50,9 @@ public class Challenge : MonoBehaviour {
 		PV.nextSumScore = PlayerPrefs.GetInt ("NextSumScore", 0);
 		PV.bestScore = PlayerPrefs.GetInt ("BestScore", 0);
 		PV.nextBestScore = PlayerPrefs.GetInt ("NextBestScore", 0);
+		PV.totalGreenLights = PlayerPrefs.GetInt ("TotalGreenLights", 0);
+		PV.nextTotalGreenLights = PlayerPrefs.GetInt ("NextTotalGreenLights", 0);
+		PV.comboGreenLight = PlayerPrefs.GetInt ("ComboGreenLight", 0);
+		PV.nextComboGreenLight = PlayerPrefs.GetInt ("NextComboGreenLight", 0);
 	}
 }

@@ -1083,7 +1083,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "\uD300\uC7A5 : \uC774\uADDC\uC6D0\n\uC0AC\uC6B4\uB4DC : \uC190\uBA85\uC9C4\n\uAE30\uD68D
     : \uACE0\uC218\uBBFC, \uC774\uB3D9\uD559\n\uC544\uD2B8 : \uC870\uC544\uC601\n\uD504\uB85C\uADF8\uB798\uBC0D
-    : \uAE40\uB2E4\uBE48, \uC5C4\uC131\uD638, \uC784\uC720\uBBFC"
+    : \uBCC0\uB2E4\uBE48, \uC5C4\uC131\uD638, \uC784\uC720\uBBFC"
 --- !u!222 &879712502
 CanvasRenderer:
   m_ObjectHideFlags: 0

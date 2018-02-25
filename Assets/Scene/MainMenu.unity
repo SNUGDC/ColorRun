@@ -652,6 +652,7 @@ MonoBehaviour:
   isBurning: 0
   isReadyForBurning: 0
   startDestroyingTime: 0
+  afterBurningDelay: 0
   savedScrollSpeed: 0
   savedScoreSpeed: 0
   alphaSpeed: 0
@@ -661,6 +662,7 @@ MonoBehaviour:
   sunglassPoint: 0
   colorOfPlayer: 0
   isPaused: 0
+  isGameOvered: 0
   score: 0
   bestScore: 0
   nextBestScore: 0
@@ -678,6 +680,7 @@ MonoBehaviour:
   nextSumBurningCount: 0
   sumGetItem: 0
   nextSumGetItem: 0
+  nowKmHSpeed: 0
   kmHSpeed: 0
   bestSpeed: 0
   nextBestSpeed: 0
@@ -837,7 +840,7 @@ RectTransform:
   m_AnchorMin: {x: 0.13, y: 0.06}
   m_AnchorMax: {x: 0.38, y: 0.21}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &614110232
 MonoBehaviour:
@@ -862,9 +865,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 28
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1137,7 +1140,7 @@ RectTransform:
   m_AnchorMin: {x: 0.13, y: 0.06}
   m_AnchorMax: {x: 0.38, y: 0.21}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243039976
 MonoBehaviour:
@@ -1162,9 +1165,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 28
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1400,7 +1403,7 @@ RectTransform:
   m_AnchorMin: {x: 0.13, y: 0.06}
   m_AnchorMax: {x: 0.38, y: 0.21}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662836819
 MonoBehaviour:
@@ -1425,9 +1428,9 @@ MonoBehaviour:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 28
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 200
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

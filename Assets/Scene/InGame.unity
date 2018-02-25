@@ -142,7 +142,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1423585577}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.093, y: 0.89}
   m_AnchorMax: {x: 0.574, y: 1}
@@ -1721,7 +1721,7 @@ Transform:
   m_LocalScale: {x: 0.9266414, y: 0.9266414, z: 0.9266414}
   m_Children: []
   m_Father: {fileID: 1423585577}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1097687097
 GameObject:
@@ -1806,7 +1806,6 @@ GameObject:
   - component: {fileID: 1214979418}
   - component: {fileID: 1214979420}
   - component: {fileID: 1214979419}
-  - component: {fileID: 1214979421}
   m_Layer: 5
   m_Name: ScoreBoard
   m_TagString: Untagged
@@ -1825,7 +1824,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1423585577}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.62, y: 0.81}
   m_AnchorMax: {x: 0.92, y: 0.95}
@@ -1865,21 +1864,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1214979417}
---- !u!114 &1214979421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1214979417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05fd497756996c04f8dbce7b42d6c6e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lightIndex: 0
-  maxIndex: 0
-  isReversed: 0
-  trafficDic: []
 --- !u!1 &1261181369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2033,7 @@ MonoBehaviour:
   isBurning: 0
   isReadyForBurning: 0
   startDestroyingTime: 0
+  afterBurningDelay: 0
   savedScrollSpeed: 0
   savedScoreSpeed: 0
   alphaSpeed: 0
@@ -2076,6 +2061,7 @@ MonoBehaviour:
   nextSumBurningCount: 0
   sumGetItem: 0
   nextSumGetItem: 0
+  nowKmHSpeed: 0
   kmHSpeed: 0
   bestSpeed: 0
   nextBestSpeed: 0
@@ -2232,11 +2218,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1586969026}
   - {fileID: 14883442}
   - {fileID: 1034950247}
   - {fileID: 1214979418}
   - {fileID: 1477233046}
-  - {fileID: 1586969026}
   - {fileID: 2120646749}
   - {fileID: 26232879}
   - {fileID: 142075355}
@@ -2532,7 +2518,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1423585577}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.63, y: 0.83}
   m_AnchorMax: {x: 0.87, y: 0.93}
@@ -2640,7 +2626,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1423585577}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

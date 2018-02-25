@@ -77,6 +77,7 @@ public class Item : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
+			PV.sumGetItem += 1;
 			ItemSpawn.PushUsedItem(gameObject);
 			if (itemtype == ItemType.police) {
 				PV.policePoint = 1;

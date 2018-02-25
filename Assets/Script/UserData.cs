@@ -28,6 +28,10 @@ public class UserData : MonoBehaviour {
 		NextBestScore ();
 		NextTotalGreenLights ();
 		NextComboGreenLight ();
+		NextSumBurningCount ();
+		NextSumGetItem ();
+		NextBestSpeed ();
+		NextTotalTouch ();
 	}
 
 	void NextSumScore(){
@@ -67,6 +71,46 @@ public class UserData : MonoBehaviour {
 			n4 = n4 + 1;
 			PV.nextComboGreenLight = 10 * n4;
 			PlayerPrefs.SetInt ("NextComboGreenLight", PV.nextComboGreenLight);
+		}
+	}
+
+	void NextSumBurningCount(){
+		PV.sumBurningCount = PlayerPrefs.GetInt ("SumBurningCount", 0);
+		PV.nextSumBurningCount = PlayerPrefs.GetInt ("NextSumBurningCount", 0);
+		if (PV.sumBurningCount > PV.nextSumBurningCount) {
+			n5 = n5 + 1;
+			PV.nextSumBurningCount = 5 * n5;
+			PlayerPrefs.SetInt ("NextSumBurningCount", PV.nextSumBurningCount);
+		}
+	}
+
+	void NextSumGetItem(){
+		PV.sumGetItem = PlayerPrefs.GetInt ("SumGetItem", 0);
+		PV.nextSumGetItem = PlayerPrefs.GetInt ("NextSumGetItem", 0);
+		if (PV.sumGetItem > PV.nextSumGetItem) {
+			n6 = n6 + 1;
+			PV.nextSumGetItem = 15 * n6;
+			PlayerPrefs.SetInt ("NextSumGetItem", PV.nextSumGetItem);
+		}
+	}
+
+	void NextBestSpeed(){
+		PV.bestSpeed = PlayerPrefs.GetFloat ("BestSpeed", 0);
+		PV.nextBestSpeed = PlayerPrefs.GetFloat ("NextBestSpeed", 0);
+		if (PV.bestSpeed > PV.nextBestSpeed) {
+			n7 = n7 + 1;
+			PV.nextBestSpeed = 10 + (5 * n7);
+			PlayerPrefs.SetFloat ("NextBestSpeed", PV.nextBestSpeed);
+		}
+	}
+
+	void NextTotalTouch(){
+		PV.totalTouch = PlayerPrefs.GetInt ("TotalTouch", 0);
+		PV.nextTotalTouch = PlayerPrefs.GetInt ("NextTotalTouch", 0);
+		if (PV.totalTouch > PV.nextTotalTouch) {
+			n8 = n8 + 1;
+			PV.nextTotalTouch = 100 * (int)Mathf.Pow(2, n8);
+			PlayerPrefs.SetInt ("NextTotalTouch", PV.nextTotalTouch);
 		}
 	}
 }

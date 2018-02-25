@@ -174,14 +174,33 @@ public class ChangeLightsColor : MonoBehaviour {
 			PlayerPrefs.SetInt ("ComboGreenLight", PV.comboGreenLight);
 		}
 
+		PV.sumBurningCount += PV.burningCount;
+		PlayerPrefs.SetInt ("SumBurningCount", PV.sumBurningCount);
+
+		PlayerPrefs.SetInt ("SumGetItem", PV.sumGetItem);
+
+		if (PV.kmHSpeed > PV.bestSpeed) {
+			PV.bestSpeed = PV.kmHSpeed;
+			PlayerPrefs.SetFloat ("BestSpeed", PV.bestSpeed);
+		}
+
+		PlayerPrefs.SetInt ("TotalTouch", PV.totalTouch);
 
 		PV.nextSumScore = PlayerPrefs.GetInt ("NextSumScore", 0);
 		PV.nextBestScore = PlayerPrefs.GetInt ("NextBestScore", 0);
 		PV.nextTotalGreenLights = PlayerPrefs.GetInt ("NextTotalGreenLights", 0);
 		PV.nextComboGreenLight = PlayerPrefs.GetInt ("NextComboGreenLight", 0);
+		PV.nextSumBurningCount = PlayerPrefs.GetInt ("NextSumBurningCount", 0);
+		PV.nextSumGetItem = PlayerPrefs.GetInt ("NextSumGetItem", 0);
+		PV.nextBestSpeed = PlayerPrefs.GetFloat ("NextBestSpeed", 0);
+		PV.nextTotalTouch = PlayerPrefs.GetInt ("NextTotalTouch", 0);
 		Debug.Log ("총 달린 거리: " + PV.sumScore + " / " + PV.nextSumScore);
 		Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
 		Debug.Log ("총 초록불 통과 개수: " + PV.totalGreenLights + " / " + PV.nextTotalGreenLights);
 		Debug.Log ("초록불 최고 연속 통과 개수: " + PV.comboGreenLight + " / " + PV.nextComboGreenLight);
+		Debug.Log ("버닝상태 진입 횟수: " + PV.sumBurningCount + " / " + PV.nextSumBurningCount);
+		Debug.Log ("지금까지 획득한 아이템 개수: " + PV.sumGetItem + " / " + PV.nextSumGetItem);
+		Debug.Log ("최고 속도: " + PV.bestSpeed + " / " + PV.nextBestSpeed);
+		Debug.Log ("지금까지 터치한 횟수: " + PV.totalTouch + " / " + PV.nextTotalTouch);
 	}
 }

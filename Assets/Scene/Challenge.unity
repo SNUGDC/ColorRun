@@ -1147,8 +1147,8 @@ MonoBehaviour:
   nextTotalGreenLightsUI: {fileID: 1788534892}
   comboGreenLightUI: {fileID: 1589153352}
   nextComboGreenLightUI: {fileID: 17686359}
-  burningUI: {fileID: 1341264645}
-  nextBurningUI: {fileID: 1907845446}
+  burningCountUI: {fileID: 1341264645}
+  nextBurningCountUI: {fileID: 1907845446}
   getItemUI: {fileID: 947969914}
   nextGetItemUI: {fileID: 2119709604}
   bestSpeedUI: {fileID: 1818758306}
@@ -2013,6 +2013,15 @@ MonoBehaviour:
   nextBestScore: 0
   sumScore: 0
   nextSumScore: 0
+  totalGreenLights: 0
+  nextTotalGreenLights: 0
+  isCombo: 0
+  nowCombo: 0
+  combo: 0
+  comboGreenLight: 0
+  nextComboGreenLight: 0
+  burningCount: 0
+  nextburningCount: 0
 --- !u!4 &1799244041
 Transform:
   m_ObjectHideFlags: 0

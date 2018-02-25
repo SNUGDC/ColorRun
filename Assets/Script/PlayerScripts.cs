@@ -73,6 +73,7 @@ public class PlayerScripts : MonoBehaviour {
 	}
 	void GetInput(){
 		if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
+			PV.totalTouch += 1;
 
 			if(PV.isBurning){
 				PV.alphaSpeed += 1f;

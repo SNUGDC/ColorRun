@@ -26,13 +26,30 @@ public class PlayerValue : MonoBehaviour
 
 	public int bestScore;
 	public int nextBestScore;
+
 	public int sumScore;
 	public int nextSumScore;
+
 	public int totalGreenLights;
 	public int nextTotalGreenLights;
+
 	public bool isCombo;
 	public int nowCombo;
 	public int combo;
 	public int comboGreenLight;
 	public int nextComboGreenLight;
+
+	public int burningCount;
+	public int sumBurningCount;
+	public int nextSumBurningCount;
+
+	public int sumGetItem;
+	public int nextSumGetItem;
+
+	public float kmHSpeed;
+	public float bestSpeed;
+	public float nextBestSpeed;
+
+	public int totalTouch;
+	public int nextTotalTouch;
 }

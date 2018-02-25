@@ -1786,6 +1786,19 @@ MonoBehaviour:
   nextBestScore: 0
   sumScore: 0
   nextSumScore: 0
+  totalGreenLights: 0
+  nextTotalGreenLights: 0
+  isCombo: 0
+  nowCombo: 0
+  combo: 0
+  comboGreenLight: 0
+  nextComboGreenLight: 0
+  burningCount: 0
+  sumBurningCount: 0
+  nextSumBurningCount: 0
+  getItem: 0
+  sumGetItem: 0
+  nextSumGetItem: 0
 --- !u!1001 &1390084631
 Prefab:
   m_ObjectHideFlags: 0

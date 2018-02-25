@@ -25,8 +25,12 @@ public class Score : MonoBehaviour {
 		Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
 		Debug.Log ("총 초록불 통과 개수: " + PV.totalGreenLights + " / " + PV.nextTotalGreenLights);
 		Debug.Log ("초록불 최고 연속 통과 개수: " + PV.comboGreenLight + " / " + PV.nextComboGreenLight);
+		Debug.Log ("버닝상태 진입 횟수: " + PV.sumBurningCount + " / " + PV.nextSumBurningCount);
+		Debug.Log ("지금까지 획득한 아이템 개수: " + PV.sumGetItem + " / " + PV.nextSumGetItem);
+		Debug.Log ("최고 속도: " + PV.bestSpeed + " / " + PV.nextBestSpeed);
+		Debug.Log ("지금까지 터치한 횟수: " + PV.totalTouch + " / " + PV.nextTotalTouch);
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		PV.score = PV.score + PV.scoreSpeed*Time.deltaTime;
@@ -58,5 +62,13 @@ public class Score : MonoBehaviour {
 		PV.nextTotalGreenLights = PlayerPrefs.GetInt ("NextTotalGreenLights", 0);
 		PV.comboGreenLight = PlayerPrefs.GetInt ("ComboGreenLight", 0);
 		PV.nextComboGreenLight = PlayerPrefs.GetInt ("NextComboGreenLight", 0);
+		PV.sumBurningCount = PlayerPrefs.GetInt ("SumBurningCount", 0);
+		PV.nextSumBurningCount = PlayerPrefs.GetInt ("NextSumBurningCount", 0);
+		PV.sumGetItem = PlayerPrefs.GetInt ("SumGetItem", 0);
+		PV.nextSumGetItem = PlayerPrefs.GetInt ("NextSumGetItem", 0);
+		PV.bestSpeed = PlayerPrefs.GetFloat ("BestSpeed", 0);
+		PV.nextBestSpeed = PlayerPrefs.GetFloat ("NextBestSpeed", 0);
+		PV.totalTouch = PlayerPrefs.GetInt ("TotalTouch", 0);
+		PV.nextTotalTouch = PlayerPrefs.GetInt ("NextTotalTouch", 0);
 	}
 }

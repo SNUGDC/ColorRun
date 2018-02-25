@@ -40,6 +40,7 @@ public class BurningGauge : MonoBehaviour {
 					PV.savedScrollSpeed = PV.scrollSpeed;
 					PV.savedScoreSpeed = PV.scoreSpeed;
 					Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
+					PV.burningCount += 1;
 				}
 				Burn ();
 				PV.isBurning = true;

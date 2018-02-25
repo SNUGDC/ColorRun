@@ -62,6 +62,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(PV.isPaused) return;
+		PV.nowKmHSpeed = PV.scrollSpeed * 2;
 		
 		GameObject currentChild;
 		for(int i=0; i < spawnPoint.childCount; i++)
@@ -82,8 +83,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 				n += 1;
 				//Debug.Log(n);
 				//Debug.Log ("Speed: " + PV.scrollSpeed);
-				PV.kmHSpeed = PV.scrollSpeed * 2;
-				Debug.Log (PV.kmHSpeed + "km/h");
+				Debug.Log ("now: " + PV.nowKmHSpeed + "km/h // " + PV.kmHSpeed + "km/h");
 			}
 			else
 			{

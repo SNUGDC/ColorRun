@@ -46,6 +46,7 @@ public class PlayerValue : MonoBehaviour
 	public int sumGetItem;
 	public int nextSumGetItem;
 
+	public float nowKmHSpeed;
 	public float kmHSpeed;
 	public float bestSpeed;
 	public float nextBestSpeed;

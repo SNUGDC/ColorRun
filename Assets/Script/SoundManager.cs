@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour{
     static SoundManager instance;
     static Queue<SoundPlayer> spPool;
     static SoundPlayer musicPlayer;
+    static SoundPlayer burningPlayer;
     
     public GameObject standardSoundPlayer;
     public SoundDic[] soundDictionary;
@@ -53,7 +54,14 @@ public class SoundManager : MonoBehaviour{
         var clip = instance.musicDictionary[n];
         musicPlayer.Play(clip, loop);
     }
-
+    public static void PlayBurning(){
+        var selectedDics = instance.soundDictionary.Where(sd => sd.type == SoundType.BurningStatus).ToArray();
+        var clip = selectedDics[Random.Range(0,selectedDics.Length)].clip;
+        burningPlayer.PlayAlone(clip);
+    }
+    public static void StopBurning(){
+        burningPlayer.Stop();
+    }
     void Awake() {
         if (instance != null) {
             Destroy(gameObject);
@@ -63,7 +71,12 @@ public class SoundManager : MonoBehaviour{
             var musicPlayerGO = Instantiate(instance.standardSoundPlayer, instance.gameObject.transform);
             musicPlayer = musicPlayerGO.GetComponent<SoundPlayer>();
             musicPlayer.SetMusicPlayer();
+            var burningPlayerGO = Instantiate(instance.standardSoundPlayer, instance.gameObject.transform);
+            burningPlayer = burningPlayerGO.GetComponent<SoundPlayer>();
             DontDestroyOnLoad(instance);
+
+            if(FindObjectOfType<PlayerScripts>()) Play(MusicType.Ingame);
+            else Play(MusicType.Main);
         }
     }
 }

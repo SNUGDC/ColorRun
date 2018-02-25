@@ -20,6 +20,15 @@ public class SoundPlayer : MonoBehaviour{
         if (isMusicPlayer) audio.loop = loop;
         else StartCoroutine(PushThisToPool(clip.length));
     }   
+    public void PlayAlone(AudioClip clip, bool loop = false){
+        audio.Stop();
+        audio.clip = clip;
+        audio.Play();
+        audio.loop = loop;
+    }
+    public void Stop(){
+        audio.Stop();
+    }
     IEnumerator PushThisToPool(float length){
         yield return new WaitForSeconds(length);
         SoundManager.PushUsedSoundPlayer(this);

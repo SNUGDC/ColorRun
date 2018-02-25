@@ -41,6 +41,7 @@ public class BurningGauge : MonoBehaviour {
 					PV.savedScoreSpeed = PV.scoreSpeed;
 					Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
 					PV.burningCount += 1;
+					SoundManager.PlayBurning();
 				}
 				Burn ();
 				PV.isBurning = true;
@@ -51,6 +52,7 @@ public class BurningGauge : MonoBehaviour {
 				BurningGaugeBurn.SetActive (false);
 				imageOfBurningGaugeCore.enabled = true;
 				imageOfBurningGaugeEmpty.enabled = true;
+				SoundManager.StopBurning();
 				PV.alphaSpeed = 0f;
 				PV.scrollSpeed = PV.savedScrollSpeed;
 				Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HowToPlay : MonoBehaviour
 {
@@ -158,7 +159,7 @@ public class HowToPlay : MonoBehaviour
 
         if(counter==20)
         {
-
+            SceneManager.LoadScene("SetUp");
         }
 
 

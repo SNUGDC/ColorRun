@@ -18,6 +18,7 @@ public class LoadingToIngame : MonoBehaviour {
 		timecount = timecount - 1;
 		//Debug.Log(timecount);
 		if (timecount < 0){
+			SoundManager.Play(MusicType.Ingame);
 			SceneManager.LoadScene ("InGame");
 		}
 	}

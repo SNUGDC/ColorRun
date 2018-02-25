@@ -138,7 +138,7 @@ public class ChangeLightsColor : MonoBehaviour {
 					SoundManager.Play(SoundType.PassYellowWithSunglass);
 					Debug.Log ("버닝게이지 감소 1회 방지");
 				}
-			} 
+			}
 			
 		}
 	}
@@ -181,6 +181,7 @@ public class ChangeLightsColor : MonoBehaviour {
 
 		if (PV.kmHSpeed > PV.bestSpeed) {
 			PV.bestSpeed = PV.kmHSpeed;
+			PV.bestSpeed = Mathf.Floor (PV.kmHSpeed * 10) * 0.1f;
 			PlayerPrefs.SetFloat ("BestSpeed", PV.bestSpeed);
 		}
 

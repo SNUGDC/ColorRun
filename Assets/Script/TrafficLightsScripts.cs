@@ -82,7 +82,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 				n += 1;
 				//Debug.Log(n);
 				//Debug.Log ("Speed: " + PV.scrollSpeed);
-				PV.kmHSpeed = Mathf.Pow(PV.scrollSpeed, 2) / 5;
+				PV.kmHSpeed = PV.scrollSpeed * 2;
 				Debug.Log (PV.kmHSpeed + "km/h");
 			}
 			else

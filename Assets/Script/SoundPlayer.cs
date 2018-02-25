@@ -14,12 +14,21 @@ public class SoundPlayer : MonoBehaviour{
         audio = GetComponent<AudioSource>();
     }
     public void Play(AudioClip clip, bool loop = false){
-        audio.Stop();
+        audio.Pause();
         audio.clip = clip;
         audio.Play();
         if (isMusicPlayer) audio.loop = loop;
         else StartCoroutine(PushThisToPool(clip.length));
     }   
+    public void PlayAlone(AudioClip clip, bool loop = false){
+        audio.Stop();
+        audio.clip = clip;
+        audio.Play();
+        audio.loop = loop;
+    }
+    public void Stop(){
+        audio.Stop();
+    }
     IEnumerator PushThisToPool(float length){
         yield return new WaitForSeconds(length);
         SoundManager.PushUsedSoundPlayer(this);
@@ -27,5 +36,18 @@ public class SoundPlayer : MonoBehaviour{
     }
     void Update(){
         audio.volume = isMusicPlayer? musicVolume : soundVolume;
+    }
+    
+    public static void SetSoundVolume(float value){
+        soundVolume = value;
+    }
+    public static float GetSoundVolume(){
+        return soundVolume;
+    }
+    public static void SetMusicVolume(float value){
+        musicVolume = value;
+    }
+    public static float GetMusicVolume(){
+        return musicVolume;
     }
 }

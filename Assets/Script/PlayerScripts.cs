@@ -79,7 +79,7 @@ public class PlayerScripts : MonoBehaviour {
 				PV.alphaSpeed += 1f;
 				SoundManager.Play(SoundType.BurningChangeLight);
 				//Debug.Log ("Speed UP: " + PV.scrollSpeed);
-			} else if (PV.afterBurningDelay <= 0) {
+			} else if (PV.afterBurningDelay <= 0.5f) {
 				trafficManager.ChangeColor();
 				SoundManager.Play(SoundType.ChangeLight);
 			}

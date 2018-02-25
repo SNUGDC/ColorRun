@@ -21,13 +21,13 @@ public class GameOver : MonoBehaviour {
 	}
     public void GameOvered() {
         
-            PV.isPaused = true;
-            gameOverWindow.SetActive(true);
+        PV.isPaused = true;
+        gameOverWindow.SetActive(true);
            
 		gameOverScore.GetComponent<Text> ().text = (int)(PV.score) + "m";
-            if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)){
-		        SceneManager.LoadScene("MainMenu");
+        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)){
+            SceneManager.LoadScene("MainMenu");
 
-            }
+        }
     }
 }

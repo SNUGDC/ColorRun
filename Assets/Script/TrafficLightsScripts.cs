@@ -108,7 +108,8 @@ public class TrafficLightsScripts : MonoBehaviour {
 
 	void GenerateRandomTraffic()
 	{
-		GameObject go = PullNewTraffic();
+		int randNum = ChooseTrafficByScore();
+		GameObject go = PullNewTraffic(randNum);
 		go.transform.SetParent(spawnPoint);
 		go.transform.position = spawnPoint.position;
 		counter = 1.0f;
@@ -120,5 +121,30 @@ public class TrafficLightsScripts : MonoBehaviour {
 			var currentChild = spawnPoint.GetChild(i).gameObject;
 			currentChild.GetComponent<ChangeLightsColor>().ChangeLight();
 		}
+	}
+	int ChooseTrafficByScore(){
+		if (PV.score > 3000){
+			return RandomGenerator(4);
+		} else if (PV.score > 2000){
+			return RandomGenerator(3);
+		} else if (PV.score > 1000){
+			return RandomGenerator(2);
+		} else {
+			return RandomGenerator(1);
+		}
+	}
+	int RandomGenerator(int numOfType){
+		var num = Random.value * 100;
+		int value = 0;
+		for (int i = 1; i < numOfType; i++){
+			if (num > 100 - 25 * i) {
+				Debug.Log("RandomGenerator : " + i);
+				value = i;
+				break;
+			}
+		}
+		if (value == 0) return 1;
+		else if (value == 1) return 0;
+		else return value;
 	}
 }

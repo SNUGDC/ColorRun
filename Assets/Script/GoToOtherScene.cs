@@ -24,6 +24,10 @@ public class GoToOtherScene : MonoBehaviour {
         SceneManager.LoadScene("Challenge");
     }
 	
+    public void GoToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
 
 
 }

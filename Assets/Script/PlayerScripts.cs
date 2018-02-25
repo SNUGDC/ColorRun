@@ -86,6 +86,8 @@ public class PlayerScripts : MonoBehaviour {
 		}
 	}
 
+
+	
 	void ChooseColor() {
 		if (PV.colorOfPlayer == 0) {
 			if (gameObject.name == "Walk") {

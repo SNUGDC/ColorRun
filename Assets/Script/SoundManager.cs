@@ -64,6 +64,9 @@ public class SoundManager : MonoBehaviour{
             musicPlayer = musicPlayerGO.GetComponent<SoundPlayer>();
             musicPlayer.SetMusicPlayer();
             DontDestroyOnLoad(instance);
+
+            if(FindObjectOfType<PlayerScripts>()) Play(MusicType.Ingame);
+            else Play(MusicType.Main);
         }
     }
 }

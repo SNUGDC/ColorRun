@@ -95,7 +95,7 @@ public class ItemSpawn : MonoBehaviour {
 			}
 		}
 
-		SlowSpeedData.ProgressLeftTime(Time.deltaTime);
+		if (!PV.isBurning) SlowSpeedData.ProgressLeftTime(Time.deltaTime);
 		/*
 		if (Time.time < itemStartTime + duration) {
 			PV.scrollSpeed += speed * Time.deltaTime / duration;

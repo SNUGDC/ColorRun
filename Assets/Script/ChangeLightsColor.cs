@@ -111,8 +111,6 @@ public class ChangeLightsColor : MonoBehaviour {
 				if (PV.policePoint < 1) {
 					SoundManager.Play(MusicType.GameOver);
 					PV.isGameOvered = true;
-					GameObject gameOverWindow = GameObject.Find("GameOverWindow");
-					gameOverWindow.GetComponent<GameOver>().GameOvered();
 					//SceneManager.LoadScene ("MainMenu");
 					//게임오버함수 호출 작성해야함
 

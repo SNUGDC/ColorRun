@@ -118,7 +118,7 @@ public class ItemSpawn : MonoBehaviour {
 	public void GenerateRandomItem() {
 		
 		itemGeneratingIndex = Random.Range (0, 100);
-		if (itemGeneratingIndex < PV.itemProbability) {
+		if (PV.afterBurningDelay < 0f && itemGeneratingIndex < PV.itemProbability) {
 			PV.itemProbability = 0;
 			PullNewItem();
 		}

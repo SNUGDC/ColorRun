@@ -82,9 +82,10 @@ public class ChangeLightsColor : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
 			if (lightIndex == 0) {
-				PV.itemProbability += 10;
 				//Debug.Log ("Item Probability: " + PV.itemProbability + "%");
-
+				if(PV.afterBurningDelay < 0f){
+					PV.itemProbability += 10;
+				}
 				if (PV.isBurning == false) {
 					PV.burningPoint += 6;
 				}

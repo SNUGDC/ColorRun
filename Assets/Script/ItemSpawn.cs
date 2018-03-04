@@ -79,6 +79,9 @@ public class ItemSpawn : MonoBehaviour {
 
 	void Start () {
 		PV.itemProbability = 0;
+		
+		PV.policePoint = 0;
+		PV.sunglassPoint = 0;
 	}
 	
 	void Update () {

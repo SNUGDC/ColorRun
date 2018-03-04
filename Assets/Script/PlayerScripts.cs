@@ -27,8 +27,6 @@ public class PlayerScripts : MonoBehaviour {
 		PV = FindObjectOfType<PlayerValue>();
 		trafficManager = FindObjectOfType<TrafficLightsScripts>();
 		itemsSpawn = FindObjectOfType<ItemSpawn>();
-		PV.policePoint = 0;
-		PV.sunglassPoint = 0;
 		scoreTime = Time.time;
 		PV.colorOfPlayer = PlayerPrefs.GetInt("colorOfPlayer");
 		charGWalking.SetActive (false);

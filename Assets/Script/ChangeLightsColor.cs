@@ -50,7 +50,7 @@ public class ChangeLightsColor : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (PV.isBurning == true) {
+		if (PV.isBurning == true || PV.afterBurningDelay > 0.5) {
 			lightIndex = 0;
 		}
 		ChangeSprite ();

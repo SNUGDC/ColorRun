@@ -9,7 +9,6 @@ public class BurningGauge : MonoBehaviour {
 	float startTime;
 	public float startDestroyingTime;
 	PlayerValue PV;
-	public GameObject BurningGaugeBurn;
 	public Image imageOfBurningGaugeEmpty;
 	public Sprite gaugeWhite;
 	public Sprite gaugeRed;
@@ -22,7 +21,6 @@ public class BurningGauge : MonoBehaviour {
 		PV.isReadyForBurning = false;
 		PV.isBurning = false;
 		PV.afterBurningDelay = 0;
-		BurningGaugeBurn.SetActive (false);
 		imageOfBurningGaugeEmpty.enabled = true;
 		startDestroyingTime = Time.time - 2f;
 	}
@@ -56,12 +54,12 @@ public class BurningGauge : MonoBehaviour {
 			} else {
 				PV.isReadyForBurning = false;
 				PV.isBurning = false;
-				BurningGaugeBurn.SetActive (false);
 				imageOfBurningGaugeEmpty.enabled = true;
 				SoundManager.StopBurning();
 				PV.alphaSpeed = 0f;
 				PV.scrollSpeed = PV.savedScrollSpeed;
 				PV.afterBurningDelay = 2;
+				imageOfBurningGaugeEmpty.sprite = gaugeWhite;
 				//Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
 				startDestroyingTime = Time.time;
 				//Debug.Log ("2초 동안 신호등 없음");
@@ -75,13 +73,13 @@ public class BurningGauge : MonoBehaviour {
 		//BurningGaugeBurn.SetActive (true);
 		//imageOfBurningGaugeEmpty.enabled = false;
 
-		if (frameCounter < 5) imageOfBurningGaugeEmpty.sprite = gaugeWhite;
+		if (frameCounter < 3) imageOfBurningGaugeEmpty.sprite = gaugeWhite;
 		else {
 			imageOfBurningGaugeEmpty.sprite = gaugeRed;
-			if(frameCounter > 9){
+			if(frameCounter > 5){
 				frameCounter = 0;
 			}
 		}
-		frameCounter = 0;
+		frameCounter++;
 	}
 }

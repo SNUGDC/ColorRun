@@ -10,6 +10,7 @@ public class BurningGauge : MonoBehaviour {
 	public float startDestroyingTime;
 	PlayerValue PV;
 	public Image imageOfBurningGaugeEmpty;
+	public GameObject burningStartPopup;
 	public Sprite gaugeWhite;
 	public Sprite gaugeRed;
 	int frameCounter;
@@ -40,35 +41,48 @@ public class BurningGauge : MonoBehaviour {
 		if (PV.isReadyForBurning == true) {
 			//Debug.Log("BurningTime : "+(Time.time - startTime));
 			if (Time.time < startTime + 5) {
-				if ((PV.isBurning == false)) {
-					PV.savedScrollSpeed = PV.scrollSpeed;
-					PV.savedScoreSpeed = PV.scoreSpeed;
-					PV.afterBurningDelay = 0.05f;
-					frameCounter = 0;
-					//Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
-					PV.burningCount += 1;
-					SoundManager.PlayBurning();
-				}
-				Burn ();
+				if ((PV.isBurning == false)){
+                    BurningStart();
+                }
+                Burn ();
 				PV.isBurning = true;
 			} else {
-				PV.isReadyForBurning = false;
-				PV.isBurning = false;
-				imageOfBurningGaugeEmpty.enabled = true;
-				SoundManager.StopBurning();
-				PV.alphaSpeed = 0f;
-				PV.scrollSpeed = PV.savedScrollSpeed;
-				PV.afterBurningDelay = 2;
-				imageOfBurningGaugeEmpty.sprite = gaugeWhite;
-				//Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
-				startDestroyingTime = Time.time;
-				//Debug.Log ("2초 동안 신호등 없음");
-			}
-		} 
+                BurningEnd();
+            }
+        } 
+		if(Input.GetKeyDown(KeyCode.B) && !PV.isBurning){
+			PV.burningPoint = 180;
+			BurningStart();
+		}
 
 	}
 
-	void Burn () {
+    private void BurningEnd(){
+        PV.isReadyForBurning = false;
+        PV.isBurning = false;
+        imageOfBurningGaugeEmpty.enabled = true;
+        SoundManager.StopBurning();
+        PV.alphaSpeed = 0f;
+        PV.scrollSpeed = PV.savedScrollSpeed;
+        PV.afterBurningDelay = 2;
+        imageOfBurningGaugeEmpty.sprite = gaugeWhite;
+        //Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
+        startDestroyingTime = Time.time;
+        //Debug.Log ("2초 동안 신호등 없음");
+    }
+
+    private void BurningStart(){
+        PV.savedScrollSpeed = PV.scrollSpeed;
+        PV.savedScoreSpeed = PV.scoreSpeed;
+        PV.afterBurningDelay = 0.05f;
+        frameCounter = 0;
+        //Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
+        PV.burningCount += 1;
+        burningStartPopup.SetActive(true);
+        SoundManager.PlayBurning();
+    }
+
+    void Burn () {
 		PV.burningPoint -= 36*Time.deltaTime;
 		//BurningGaugeBurn.SetActive (true);
 		//imageOfBurningGaugeEmpty.enabled = false;

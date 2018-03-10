@@ -8,7 +8,7 @@ public class PlayerScripts : MonoBehaviour {
 	ItemSpawn itemsSpawn;
 	PlayerValue PV;
 	float logBase = 1.6f;
-	float scoreTime;
+	float time;
 	public GameObject sunglasses;
 	public GameObject police;
 	public GameObject charGWalking;
@@ -27,7 +27,7 @@ public class PlayerScripts : MonoBehaviour {
 		PV = FindObjectOfType<PlayerValue>();
 		trafficManager = FindObjectOfType<TrafficLightsScripts>();
 		itemsSpawn = FindObjectOfType<ItemSpawn>();
-		scoreTime = Time.time;
+		time = 0f;
 		PV.colorOfPlayer = PlayerPrefs.GetInt("colorOfPlayer");
 		charGWalking.SetActive (false);
 		charYWalking.SetActive (false);
@@ -49,13 +49,17 @@ public class PlayerScripts : MonoBehaviour {
 		if(PV.isPaused) return;
 
 		GetInput ();
+		if(!PV.isBurning){
+			time += Time.deltaTime;
+		}
 
-		if (GetTime () <= 1.0f) {
+		if (time <= 1.0f) {
 			
 		} else {
-			PV.scrollSpeed += Mathf.Log (2.718281f, logBase) * Time.deltaTime / GetTime () + PV.alphaSpeed * Time.deltaTime + SlowSpeedData.GetDeltaSpeed(Time.deltaTime);
-			PV.scoreSpeed += Mathf.Log (2.718281f, logBase) * Time.deltaTime / (Time.time - scoreTime) + PV.alphaSpeed * Time.deltaTime;
-			PV.frequency = PV.scrollSpeed / 20 * (GetTime () / 60 + 1);
+			//다음엔 로그 베이스를 건드려보자...
+			PV.scrollSpeed += Mathf.Log (2.718281f, logBase) * Time.deltaTime / Mathf.Pow(time, 1.5f) + PV.alphaSpeed * Time.deltaTime + SlowSpeedData.GetDeltaSpeed(Time.deltaTime);
+			PV.scoreSpeed += Mathf.Log (2.718281f, logBase) * Time.deltaTime / time + PV.alphaSpeed * Time.deltaTime;
+			PV.frequency = PV.scrollSpeed / 20 * (Mathf.Sqrt(time / 60) + 1);
 		}
 
 		if (PV.policePoint == 1) {
@@ -84,8 +88,6 @@ public class PlayerScripts : MonoBehaviour {
 		}
 	}
 
-
-	
 	void ChooseColor() {
 		if (PV.colorOfPlayer == 0) {
 			if (gameObject.name == "Walk") {

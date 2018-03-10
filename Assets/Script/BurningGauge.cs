@@ -64,6 +64,7 @@ public class BurningGauge : MonoBehaviour {
         SoundManager.StopBurning();
         PV.alphaSpeed = 0f;
         PV.scrollSpeed = PV.savedScrollSpeed;
+		PV.scoreSpeed = PV.savedScoreSpeed;
         PV.afterBurningDelay = 2;
         imageOfBurningGaugeEmpty.sprite = gaugeWhite;
         //Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);

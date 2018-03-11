@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: cc4e4d33859037c4ab6d716c240c9b3d
-timeCreated: 1519561296
+guid: a11c7614a2959c34e8ff7ee8adc6b465
+timeCreated: 1520756529
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: "\uADF8\uB9BC7_0"
+    21300000: "\uADF8\uB9BC18_0"
+    21300002: 17_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -77,14 +78,24 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uADF8\uB9BC7_0"
+      name: 17_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
         width: 1134
         height: 638

@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class BurningGauge : MonoBehaviour {
 
 	public Image imageOfBurningGaugeCore;
-	float startTime;
-	public float startDestroyingTime;
+	float time;
 	PlayerValue PV;
 	public Image imageOfBurningGaugeEmpty;
 	public GameObject burningStartPopup;
@@ -23,7 +22,7 @@ public class BurningGauge : MonoBehaviour {
 		PV.isBurning = false;
 		PV.afterBurningDelay = 0;
 		imageOfBurningGaugeEmpty.enabled = true;
-		startDestroyingTime = Time.time - 2f;
+		time = 0;
 	}
 	
 	// Update is called once per frame
@@ -35,12 +34,11 @@ public class BurningGauge : MonoBehaviour {
 
 		if ((PV.burningPoint>=180) && (PV.isReadyForBurning == false)) {
 			PV.isReadyForBurning = true;
-			startTime = Time.time;
 		}
 
 		if (PV.isReadyForBurning == true) {
 			//Debug.Log("BurningTime : "+(Time.time - startTime));
-			if (Time.time < startTime + 5) {
+			if (time < 5) {
 				if ((PV.isBurning == false)){
                     BurningStart();
                 }
@@ -68,8 +66,8 @@ public class BurningGauge : MonoBehaviour {
         PV.afterBurningDelay = 2;
         imageOfBurningGaugeEmpty.sprite = gaugeWhite;
         //Debug.Log ("속도 초기화: " + PV.savedScrollSpeed);
-        startDestroyingTime = Time.time;
         //Debug.Log ("2초 동안 신호등 없음");
+		time = 0;
     }
 
     private void BurningStart(){
@@ -77,6 +75,7 @@ public class BurningGauge : MonoBehaviour {
         PV.savedScoreSpeed = PV.scoreSpeed;
         PV.afterBurningDelay = 0.05f;
         frameCounter = 0;
+		time = 0;
         //Debug.Log ("속도 저장: " + PV.savedScrollSpeed);
         PV.burningCount += 1;
         burningStartPopup.SetActive(true);
@@ -85,6 +84,7 @@ public class BurningGauge : MonoBehaviour {
 
     void Burn () {
 		PV.burningPoint -= 36*Time.deltaTime;
+		time+=Time.deltaTime;
 		//BurningGaugeBurn.SetActive (true);
 		//imageOfBurningGaugeEmpty.enabled = false;
 

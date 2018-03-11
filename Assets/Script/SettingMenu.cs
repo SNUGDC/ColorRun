@@ -17,8 +17,12 @@ public class SettingMenu : MonoBehaviour {
 	public void SetMusicVolume(){
 		SoundPlayer.SetMusicVolume(musicSlider.value);	
 	}
-	
-	// Update is called once per frame
+	public void EnableSetting(){
+		gameObject.SetActive(true);
+	}
+	public void DisableSetting(){
+		gameObject.SetActive(false);
+	}
 	void Update () {
 		
 	}

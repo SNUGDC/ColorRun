@@ -27,7 +27,15 @@ public class ChangeLightsColor : MonoBehaviour {
 
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
-	}
+        if (PV.colorOfPlayer == 2)
+        {
+            PV.life = 1;
+        }
+        else
+        {
+            PV.life = 0;
+        }
+    }
 	void OnEnable () {
 		SetRandomLight();
 		if (Time.time < PV.startDestroyingTime + 2){
@@ -81,18 +89,28 @@ public class ChangeLightsColor : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player") {
-			if (lightIndex == 0) {
+			if (lightIndex == 0 ) {
 				//Debug.Log ("Item Probability: " + PV.itemProbability + "%");
 				if(PV.afterBurningDelay < 0f){
 					PV.itemProbability += 10;
 				}
 				if (PV.isBurning == false) {
-					PV.burningPoint += 6;
+
+                    if (PV.colorOfPlayer == 0)
+                    {
+                        PV.burningPoint += 7.5f;
+
+                    }else
+                    {
+                        PV.burningPoint += 6;
+                    }
+					
 				}
 				SoundManager.Play(SoundType.PassGreen);
 
 				PV.totalGreenLights += 1;
 				CheckCombo ();
+                Debug.Log(PV.nowCombo);
 				if (PV.nowKmHSpeed > PV.kmHSpeed) {
 					PV.kmHSpeed = PV.nowKmHSpeed;
 				}
@@ -110,13 +128,19 @@ public class ChangeLightsColor : MonoBehaviour {
 				}
 
 				if (PV.policePoint < 1) {
-					SoundManager.Play(MusicType.GameOver);
-					PV.isGameOvered = true;
-					//SceneManager.LoadScene ("MainMenu");
-					//게임오버함수 호출 작성해야함
-
-					SaveScore ();
-				} else {
+                    if (PV.life == 1)
+                    {
+                        PV.life -= 1;
+                        Debug.Log("life is null");
+                        SoundManager.Play(SoundType.PassRedWithPolice);
+                    } else {
+                        SoundManager.Play(MusicType.GameOver);
+                        PV.isGameOvered = true;
+                        //SceneManager.LoadScene ("MainMenu");
+                        //게임오버함수 호출 작성해야함
+                        SaveScore();
+                    }
+                } else {
 					PV.policePoint -= 1;
 					SoundManager.Play(SoundType.PassRedWithPolice);
 					//Debug.Log ("게임 오버 1회 방지");
@@ -144,11 +168,29 @@ public class ChangeLightsColor : MonoBehaviour {
 				}
 
 				if (PV.sunglassPoint < 1) {
-					if (PV.burningPoint < 24) {
-						PV.burningPoint = 0;
-					} else {
-						PV.burningPoint -= 24;
-					}
+
+                    if (PV.colorOfPlayer == 1)
+                    {
+                        if (PV.burningPoint < 12)
+                        {
+                            PV.burningPoint = 0;
+                        }
+                        else
+                        {
+                            PV.burningPoint -= 12;
+                        }
+                    }
+                    else
+                    {
+                        if (PV.burningPoint < 24)
+                        {
+                            PV.burningPoint = 0;
+                        }
+                        else
+                        {
+                            PV.burningPoint -= 24;
+                        }
+                    }
 					SoundManager.Play(SoundType.PassYellow);
 				} else {
 					PV.sunglassPoint -= 1;

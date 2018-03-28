@@ -56,5 +56,7 @@ public class PlayerValue : MonoBehaviour
 
 	public int totalTouch;
 	public int nextTotalTouch;
+
+    public int life;
 	
 }

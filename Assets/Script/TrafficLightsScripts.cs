@@ -58,6 +58,7 @@ public class TrafficLightsScripts : MonoBehaviour {
 		PV.frequency = 0.3f;
 		PV.initTime = Time.time;
 		Debug.Log("Start");
+
 	}
 	// Update is called once per frame
 	void Update () {

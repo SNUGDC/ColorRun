@@ -151,9 +151,12 @@ public class ChangeLightsColor : MonoBehaviour {
 				if (PV.nowCombo > PV.combo) {
 					PV.combo = PV.nowCombo;
 				}
-				PV.nowCombo = 0;
-				//Debug.Log ("COMBO: " + PV.nowCombo + " " + PV.isCombo);
-				PV.isCombo = false;
+				
+				if (!(PV.colorOfPlayer == 1 && PV.nowCombo <= 70 )){
+					PV.nowCombo = 0;
+					//Debug.Log ("COMBO: " + PV.nowCombo + " " + PV.isCombo);
+					PV.isCombo = false;
+				}
 
 				if (PV.nowKmHSpeed > PV.kmHSpeed) {
 					PV.kmHSpeed = PV.nowKmHSpeed;

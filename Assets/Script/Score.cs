@@ -34,7 +34,7 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!PV.isPaused && !PV.isGameOvered) {
-			PV.score = PV.score + PV.scoreSpeed*Time.deltaTime;
+			PV.score += PV.scoreSpeed*Time.deltaTime * PV.GetComboCoef();
 		}
 		scoreUIObject.GetComponent<Text> ().text = (int)(PV.score) + "m";
 

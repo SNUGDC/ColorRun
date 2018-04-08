@@ -58,5 +58,14 @@ public class PlayerValue : MonoBehaviour
 	public int nextTotalTouch;
 
     public int life;
+
+	public float GetComboCoef(){
+		if (nowCombo >= 20) {
+			float result = (81+nowCombo)/100f;
+			return result;
+		} else {
+			return 1;
+		}
+	}
 	
 }

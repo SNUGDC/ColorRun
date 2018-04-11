@@ -110,7 +110,7 @@ public class ChangeLightsColor : MonoBehaviour {
 
 				PV.totalGreenLights += 1;
 				CheckCombo ();
-                Debug.Log(PV.nowCombo);
+                //Debug.Log(PV.nowCombo);
 				if (PV.nowKmHSpeed > PV.kmHSpeed) {
 					PV.kmHSpeed = PV.nowKmHSpeed;
 				}

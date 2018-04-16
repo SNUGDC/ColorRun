@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour {
 
 	public GameObject scoreUIObject;
+	public GameObject comboCoefUIObject;
 	PlayerValue PV;
 	public GameObject playerWalk;
 	public GameObject playerScooter;
@@ -15,11 +16,13 @@ public class Score : MonoBehaviour {
 	void Awake()
 	{
 		PV = FindObjectOfType<PlayerValue>();
+		Debug.Log("Score : "+gameObject.name);
 	}
 	// Use this for initialization
 	void Start () {
 		LoadScore();
 		scoreUIObject.GetComponent<Text> ().text = "이동거리: 0m";
+		comboCoefUIObject.SetActive(false);
 
 		Debug.Log ("총 달린 거리: " + PV.sumScore + " / " + PV.nextSumScore);
 		Debug.Log ("가장 멀리 간 거리: " + PV.bestScore + " / " + PV.nextBestScore);
@@ -34,7 +37,15 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!PV.isPaused && !PV.isGameOvered) {
-			PV.score += PV.scoreSpeed*Time.deltaTime * PV.GetComboCoef();
+			var comboCoef = PV.GetComboCoef();
+			PV.score += PV.scoreSpeed*Time.deltaTime * comboCoef;
+			if (comboCoef > 1.005){
+				var n = System.Math.Round((double)comboCoef, 2);
+				comboCoefUIObject.SetActive(true);
+				comboCoefUIObject.GetComponent<Text>().text = "x"+n;
+			} else {
+				comboCoefUIObject.SetActive(false);
+			}
 		}
 		scoreUIObject.GetComponent<Text> ().text = (int)(PV.score) + "m";
 
@@ -43,8 +54,7 @@ public class Score : MonoBehaviour {
 			playerScooter.SetActive (false);
 			playerCar.SetActive (false);
 
-		} 
-		else if ((1000 < PV.score) && (PV.score <= 3000)) {
+		} else if ((1000 < PV.score) && (PV.score <= 3000)) {
 			playerWalk.SetActive (false);
 			playerScooter.SetActive (true);
 			playerCar.SetActive (false);

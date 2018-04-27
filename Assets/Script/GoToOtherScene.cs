@@ -7,8 +7,8 @@ public class GoToOtherScene : MonoBehaviour {
 
 
 	public void GoToMainMenu() {
-		SoundManager.Play(MusicType.Main);
 		SceneManager.LoadScene("MainMenu");
+		SoundManager.Play(MusicType.Main);
 	}
 	public void GoToLoadingScene() {
 		SceneManager.LoadScene ("Loading");

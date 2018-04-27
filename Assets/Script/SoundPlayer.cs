@@ -5,6 +5,9 @@ public class SoundPlayer : MonoBehaviour{
     public static float soundVolume = 1;
     public static float musicVolume = 1;
     bool isMusicPlayer = false;
+    bool isSoundPlaying;
+    float initTime;
+    float clipLength;
     AudioSource audio;
 
     public void SetMusicPlayer(){
@@ -18,7 +21,7 @@ public class SoundPlayer : MonoBehaviour{
         audio.clip = clip;
         audio.Play();
         if (isMusicPlayer) audio.loop = loop;
-        else StartCoroutine(PushThisToPool(clip.length));
+        else SetTimer(clip.length);
     }   
     public void PlayAlone(AudioClip clip, bool loop = false){
         audio.Stop();
@@ -29,13 +32,22 @@ public class SoundPlayer : MonoBehaviour{
     public void Stop(){
         audio.Stop();
     }
-    IEnumerator PushThisToPool(float length){
-        yield return new WaitForSeconds(length);
+    void SetTimer(float length){
+        initTime = Time.time;
+        clipLength = length;
+        isSoundPlaying = true;
+    }
+    void PushThisToPool(){
+        isSoundPlaying = false;
         SoundManager.PushUsedSoundPlayer(this);
         gameObject.SetActive(false);
     }
     void Update(){
         audio.volume = isMusicPlayer? musicVolume : soundVolume;
+
+        if(isSoundPlaying && Time.time >= initTime + clipLength){
+            PushThisToPool();
+        }
     }
     
     public static void SetSoundVolume(float value){

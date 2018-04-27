@@ -8,6 +8,8 @@ public class GameOver : MonoBehaviour {
 
 	public GameObject gameOverWindow;
     public GameObject gameOverScore;
+    public GoToOtherScene sceneMover;
+
 	PlayerValue PV;
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
@@ -26,7 +28,7 @@ public class GameOver : MonoBehaviour {
            
 		gameOverScore.GetComponent<Text> ().text = (int)(PV.score) + "m";
         if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)){
-            SceneManager.LoadScene("MainMenu");
+            sceneMover.GoToMainMenu();
 
         }
     }

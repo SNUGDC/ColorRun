@@ -50,7 +50,25 @@ public class Challenge : MonoBehaviour {
 	}
 		
 	void Update () {
-		
+		if(Input.GetKeyDown(KeyCode.R)){
+			PlayerPrefs.SetInt ("SumScore", 0);
+			PlayerPrefs.SetInt ("NextSumScore", 0);
+			PlayerPrefs.SetInt ("BestScore", 0);
+			PlayerPrefs.SetInt ("NextBestScore", 0);
+			PlayerPrefs.SetInt ("TotalGreenLights", 0);
+			PlayerPrefs.SetInt ("NextTotalGreenLights", 0);
+			PlayerPrefs.SetInt ("ComboGreenLight", 0);
+			PlayerPrefs.SetInt ("NextComboGreenLight", 0);
+			PlayerPrefs.SetInt ("SumBurningCount", 0);
+			PlayerPrefs.SetInt ("NextSumBurningCount", 0);
+			PlayerPrefs.SetInt ("SumGetItem", 0);
+			PlayerPrefs.SetInt ("NextSumGetItem", 0);
+			PlayerPrefs.SetFloat ("BestSpeed", 0);
+			PlayerPrefs.SetFloat ("NextBestSpeed", 0);
+			PlayerPrefs.SetInt ("TotalTouch", 0);
+			PlayerPrefs.SetInt ("NextTotalTouch", 0);
+			Debug.Log("Reset Challenge");
+		}
 	}
 
 	void Load() {

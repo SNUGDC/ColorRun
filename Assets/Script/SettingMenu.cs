@@ -23,7 +23,7 @@ public class SettingMenu : MonoBehaviour {
 	public void DisableSetting(){
 		gameObject.SetActive(false);
 	}
-	void Update () {
-		
+	public bool IsActiveInHierarchy(){
+		return gameObject.activeInHierarchy;
 	}
 }

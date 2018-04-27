@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UserData : MonoBehaviour {
 
+	static UserData instance;
 	PlayerValue PV;
 
 	public int n1 = 0;
@@ -17,11 +18,14 @@ public class UserData : MonoBehaviour {
 
 	void Awake(){
 		PV = FindObjectOfType<PlayerValue>();
+		if (instance != null){
+			Destroy(gameObject);
+		} else {
+			instance = this;
+			DontDestroyOnLoad (gameObject);
+		}
 	}
 
-	void Start() {
-		DontDestroyOnLoad (gameObject);
-	}
 
 	void Update() {
 		NextSumScore ();

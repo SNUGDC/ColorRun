@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 215028041}
   - component: {fileID: 215028040}
   - component: {fileID: 215028043}
+  - component: {fileID: 215028044}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -634,6 +635,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c991b21ee78de145858aacc8f18ab0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &215028044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 215028038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61504d17c7d044469df9a0c50e437b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneType: 2
+  setting: {fileID: 0}
+  sceneMover: {fileID: 215028043}
 --- !u!1 &229647977
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,6 +2299,7 @@ MonoBehaviour:
   nextBestSpeed: 0
   totalTouch: 0
   nextTotalTouch: 0
+  life: 0
 --- !u!4 &1799244041
 Transform:
   m_ObjectHideFlags: 0
